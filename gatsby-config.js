@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: 'Gatsby + WordPress Starter',
@@ -9,23 +13,21 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site.
-        baseUrl: 'wpdemo.gatsbycentral.com',
-        // WP.com sites set to true, WP.org set to false
+        baseUrl: process.env.WP_URL,
         hostingWPCOM: false,
-        // The protocol. This can be http or https.
-        protocol: 'https',
-        // Use 'Advanced Custom Fields' Wordpress plugin
+        protocol: 'http',
         useACF: false,
         auth: {},
-        // Set to true to debug endpoints on 'gatsby build'
         verboseOutput: false,
+        // prevents weird console errors: https://github.com/gatsbyjs/gatsby/issues/7079
+        excludedRoutes: ["/wp/v2/users/me", "/acf/v2/options", "/wp/v2/settings", "/wp/v2/themes"],
       },
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
       // Removes unused css rules
-      resolve:'gatsby-plugin-purgecss',
+      resolve: 'gatsby-plugin-purgecss',
       options: {
         // Activates purging in gatsby develop
         develop: true,
