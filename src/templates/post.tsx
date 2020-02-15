@@ -4,14 +4,20 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 
-export const BlogPostTemplate = ({
-  content,
-  categories,
-  tags,
-  title,
-  date,
-  author,
-}) => {
+import { BlogPostByIdQuery, Wordpress__Category, Maybe } from '../../graphql-types'
+
+type TemplateProps = {
+  data: BlogPostByIdQuery
+}
+
+export const BlogPostTemplate: React.FC<TemplateProps> = ({ data }) => {
+  const { wordpressPost: post } = data
+
+  if (!post
+    || !post.content
+    || !post.title) return (<>Error loading Post :( </>)
+
+  const { title, content, date, author, categories, tags } = post
   return (
     <section className="section">
       <div className="container content">
@@ -24,16 +30,16 @@ export const BlogPostTemplate = ({
             <div style={{ marginTop: `4rem` }}>
               <p>
                 {date} - posted by{' '}
-                <Link to={`/author/${author.slug}`}>{author.name}</Link>
+                <Link to={`/author/${author?.slug}`}>{author?.name}</Link>
               </p>
               {categories && categories.length ? (
                 <div>
                   <h4>Categories</h4>
                   <ul className="taglist">
                     {categories.map(category => (
-                      <li key={`${category.slug}cat`}>
-                        <Link to={`/categories/${category.slug}/`}>
-                          {category.name}
+                      <li key={`${category?.slug}cat`}>
+                        <Link to={`/categories/${category?.slug}/`}>
+                          {category?.name}
                         </Link>
                       </li>
                     ))}
@@ -45,8 +51,8 @@ export const BlogPostTemplate = ({
                   <h4>Tags</h4>
                   <ul className="taglist">
                     {tags.map(tag => (
-                      <li key={`${tag.slug}tag`}>
-                        <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
+                      <li key={`${tag?.slug}tag`}>
+                        <Link to={`/tags/${tag?.slug}/`}>{tag?.name}</Link>
                       </li>
                     ))}
                   </ul>
@@ -60,33 +66,19 @@ export const BlogPostTemplate = ({
   )
 }
 
-BlogPostTemplate.propTypes = {
-  content: PropTypes.node.isRequired,
-  title: PropTypes.string,
+type Props = {
+  data: BlogPostByIdQuery
 }
 
-const BlogPost = ({ data }) => {
+const BlogPost: React.FC<Props> = ({ data }) => {
   const { wordpressPost: post } = data
 
   return (
     <Layout>
-      <Helmet title={`${post.title} | Blog`} />
-      <BlogPostTemplate
-        content={post.content}
-        categories={post.categories}
-        tags={post.tags}
-        title={post.title}
-        date={post.date}
-        author={post.author}
-      />
+      <Helmet title={`${post?.title} | Blog`} />
+      <BlogPostTemplate data={data} />
     </Layout>
   )
-}
-
-BlogPost.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
 }
 
 export default BlogPost

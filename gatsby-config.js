@@ -7,6 +7,7 @@ module.exports = {
     title: 'Gatsby + WordPress Starter',
   },
   plugins: [
+    'gatsby-plugin-graphql-codegen',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
@@ -24,6 +25,8 @@ module.exports = {
       },
     },
     'gatsby-plugin-sharp',
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-typescript-checker',
     'gatsby-transformer-sharp',
     {
       // Removes unused css rules

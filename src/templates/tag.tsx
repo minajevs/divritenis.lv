@@ -4,14 +4,25 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 
-const Tag = props => {
+import { TagPageQuery } from '../../graphql-types'
+
+type Props = {
+  data: TagPageQuery,
+  pageContext: {
+    currentPage: number,
+    numPages: number,
+    name: string
+  }
+}
+
+const Tag: React.FC<Props> = props => {
   const { data, pageContext } = props
   const { edges: posts, totalCount } = data.allWordpressPost
-  const { title: siteTitle } = data.site.siteMetadata
+  const siteTitle = data?.site?.siteMetadata?.title
   const { name: tag } = pageContext
   const title = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-  } with the tag ${tag}`
+    } with the tag ${tag}`
 
   return (
     <Layout>

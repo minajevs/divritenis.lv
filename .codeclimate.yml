@@ -7,13 +7,13 @@ engines:
     enabled: true
     config:
       languages:
-        javascript:
+        typescript:
           mass_threshold: 70
 
 ratings:
    paths:
-    - "**.js"
-    - "**.jsx"
+    - "**.ts"
+    - "**.tsx"
     - "**.css"
 
 exclude_paths:

@@ -3,7 +3,14 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 
-export const PageTemplate = ({ title, content }) => {
+import { PageByIdQuery } from '../../graphql-types'
+
+type TemplateProps = {
+  title: string,
+  content: string
+}
+
+export const PageTemplate: React.FC<TemplateProps> = ({ title, content }) => {
   return (
     <section className="section section--gradient">
       <div className="container">
@@ -25,23 +32,19 @@ export const PageTemplate = ({ title, content }) => {
   )
 }
 
-PageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
+type Props = {
+  data: PageByIdQuery
 }
 
-const Page = ({ data }) => {
+
+const Page: React.FC<Props> = ({ data }) => {
   const { wordpressPage: page } = data
 
   return (
     <Layout>
-      <PageTemplate title={page.title} content={page.content} />
+      <PageTemplate title={page?.title ?? ""} content={page?.content ?? ""} />
     </Layout>
   )
-}
-
-Page.propTypes = {
-  data: PropTypes.object.isRequired,
 }
 
 export default Page

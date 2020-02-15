@@ -1,7 +1,15 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-const Pagination = ({ pageContext, pathPrefix }) => {
+type Props = {
+  pageContext: {
+    currentPage: number,
+    numPages: number
+  },
+  pathPrefix: string
+}
+
+const Pagination: React.FC<Props> = ({ pageContext, pathPrefix }: any) => {
   const { previousPagePath, nextPagePath } = pageContext
 
   return (

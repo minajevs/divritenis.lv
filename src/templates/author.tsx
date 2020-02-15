@@ -4,19 +4,20 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 
-const Author = props => {
-  const { data } = props
-  const { authored_wordpress__POST, name } = data.wordpressWpUsers
+import { AuthorPageQuery, PostListFieldsFragment } from "../../graphql-types"
+
+const Author: React.FC<{ data: AuthorPageQuery }> = ({ data }) => {
+  const author = data.wordpressWpUsers?.authored_wordpress__POST
   const totalCount =
-    (authored_wordpress__POST && authored_wordpress__POST.length) || 0
-  const { title: siteTitle } = data.site.siteMetadata
+    (author && author.length) || 0
+  const siteTitle = data.site?.siteMetadata?.title
   const title = `${totalCount} post${totalCount === 1 ? '' : 's'} by ${name}`
 
   // The `authored_wordpress__POST` returns a simple array instead of an array
   // of edges / nodes. We therefore need to convert the array here.
-  const posts = authored_wordpress__POST.map(post => ({
-    node: post,
-  }))
+  const posts = author?.map(post => ({
+    node: post ?? {} as PostListFieldsFragment,
+  })) ?? []
 
   return (
     <Layout>

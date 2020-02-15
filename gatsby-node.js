@@ -28,7 +28,7 @@ exports.createPages = ({ actions, graphql }) => {
         return Promise.reject(result.errors)
       }
 
-      const pageTemplate = path.resolve(`./src/templates/page.js`)
+      const pageTemplate = path.resolve(`./src/templates/page.tsx`)
 
       // Only publish pages with a `status === 'publish'` in production. This
       // excludes drafts, future posts, etc. They will appear in development,
@@ -72,8 +72,8 @@ exports.createPages = ({ actions, graphql }) => {
         return Promise.reject(result.errors)
       }
 
-      const postTemplate = path.resolve(`./src/templates/post.js`)
-      const blogTemplate = path.resolve(`./src/templates/blog.js`)
+      const postTemplate = path.resolve(`./src/templates/post.tsx`)
+      const blogTemplate = path.resolve(`./src/templates/blog.tsx`)
 
       // In production builds, filter for only published posts.
       const allPosts = result.data.allWordpressPost.edges
@@ -124,7 +124,7 @@ exports.createPages = ({ actions, graphql }) => {
         return Promise.reject(result.errors)
       }
 
-      const categoriesTemplate = path.resolve(`./src/templates/category.js`)
+      const categoriesTemplate = path.resolve(`./src/templates/category.tsx`)
 
       // Create a Gatsby page for each WordPress Category
       _.each(result.data.allWordpressCategory.edges, ({ node: cat }) => {
@@ -160,7 +160,7 @@ exports.createPages = ({ actions, graphql }) => {
         return Promise.reject(result.errors)
       }
 
-      const tagsTemplate = path.resolve(`./src/templates/tag.js`)
+      const tagsTemplate = path.resolve(`./src/templates/tag.tsx`)
 
       // Create a Gatsby page for each WordPress tag
       _.each(result.data.allWordpressTag.edges, ({ node: tag }) => {
@@ -194,7 +194,7 @@ exports.createPages = ({ actions, graphql }) => {
         return Promise.reject(result.errors)
       }
 
-      const authorTemplate = path.resolve(`./src/templates/author.js`)
+      const authorTemplate = path.resolve(`./src/templates/author.tsx`)
 
       _.each(result.data.allWordpressWpUsers.edges, ({ node: author }) => {
         createPage({
