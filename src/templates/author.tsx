@@ -8,6 +8,7 @@ import { AuthorPageQuery, PostListFieldsFragment } from "../../graphql-types"
 
 const Author: React.FC<{ data: AuthorPageQuery }> = ({ data }) => {
   const author = data.wordpressWpUsers?.authored_wordpress__POST
+  const name = data.wordpressWpUsers?.name
   const totalCount =
     (author && author.length) || 0
   const siteTitle = data.site?.siteMetadata?.title
