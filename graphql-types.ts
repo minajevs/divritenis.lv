@@ -7452,7 +7452,7 @@ export type PostListFieldsFragment = (
 );
 
 export type HomePageByIdQueryVariables = {
-  id: Scalars['String']
+  id?: Maybe<Scalars['String']>
 };
 
 

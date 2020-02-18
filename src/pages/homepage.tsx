@@ -18,7 +18,7 @@ export const PageTemplate: React.FC<TemplateProps> = ({ title, content }) => {
           <div className="column is-10 is-offset-1">
             <div className="section">
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title} 
+                {title}
               </h2>
               <div
                 className="content"
@@ -41,14 +41,14 @@ const Page: React.FC<Props> = ({ data }) => {
   const { wordpressPage: page } = data
 
   return (
-      <PageTemplate title={page?.title ?? ""} content={page?.content ?? ""} />
+    <PageTemplate title={page?.title ?? ""} content={page?.content ?? ""} />
   )
 }
 
 export default Page
 
 export const pageQuery = graphql`
-  query HomePageById($id: String!) {
+  query HomePageById($id: String) {
     wordpressPage(id: { eq: $id }) {
       title
       content
