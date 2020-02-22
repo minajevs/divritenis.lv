@@ -10527,7 +10527,13 @@ export type HomePageByIdQueryVariables = {
 };
 
 
-export type HomePageByIdQuery = { wordpressPage: Maybe<Pick<Wordpress__Page, 'title' | 'content'>> };
+export type HomePageByIdQuery = { wordpressPage: Maybe<(
+    Pick<Wordpress__Page, 'title' | 'content'>
+    & { blocks: Maybe<Array<Maybe<(
+      Pick<Wordpress__PageBlocks, 'blockName'>
+      & { attrs: Maybe<Pick<Wordpress__PageBlocksAttrs, 'links' | 'logo'>> }
+    )>>> }
+  )> };
 
 export type AuthorPageQueryVariables = {
   id: Scalars['String']

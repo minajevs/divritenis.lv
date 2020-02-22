@@ -13,7 +13,7 @@ export type Props = {
     logoAttr: string
 }
 
-export const Logo: React.FC<Props> = ({ logoAttr }) => {
+const Logo: React.FC<Props> = ({ logoAttr }) => {
     const logoBlock = JSON.parse(decodeURI(logoAttr)) as LogoBlock | undefined
 
     if (logoBlock === undefined) return null

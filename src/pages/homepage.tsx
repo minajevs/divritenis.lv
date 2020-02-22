@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Logo from '../components/homepage/Logo'
+import Links from '../components/homepage/Links'
 
 import getBlock from '../utils/getWpBlockByName'
 
@@ -24,28 +25,7 @@ const HomePage: React.FC<Props> = ({ data }) => {
           <Logo logoAttr={headerBlock.attrs?.logo ?? ""} />
         </div>
         <div className="column">
-          <div className="columns">
-            <div className="column">
-              Zinas
-            </div>
-            <div className="column">
-              Noderigi
-            </div>
-            <div className="column">
-              Dokumenti
-            </div>
-          </div>
-          <div className="columns">
-            <div className="column">
-              Kalendars
-            </div>
-            <div className="column">
-              Drosiba
-            </div>
-            <div className="column">
-              Apvieniba
-            </div>
-          </div>
+          <Links />
         </div>
       </div>
       <div className="columns">
