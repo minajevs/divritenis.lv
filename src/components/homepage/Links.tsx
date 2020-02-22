@@ -13,7 +13,9 @@ export type Props = {
 
 const Link: React.FC<LinkType> = (link) => {
     return (
-        <a href={link.url} className="is-uppercase has-text-weight-semibold">{link.text}</a>
+        <div className="notification">
+            <a href={link.url} className="is-uppercase has-text-weight-semibold">{link.text}</a>
+        </div>    
     )
 }
 
