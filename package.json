@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-wordpress",
-  "description": "Gatsby v2 starter for WordPress",
+  "name": "divritenis.lv",
+  "description": "divritenis.lv frontend",
   "version": "0.1.0",
-  "author": "GatsbyCentral.com",
+  "author": "",
   "dependencies": {
     "@types/lodash": "^4.14.149",
     "@types/react": "^16.9.19",
@@ -41,7 +41,10 @@
     "uuid": "^3.4.0"
   },
   "keywords": [
-    "gatsby"
+    "divritenis.lv",
+    "gatsby",
+    "wordpress",
+    "static"
   ],
   "license": "MIT",
   "main": "n/a",

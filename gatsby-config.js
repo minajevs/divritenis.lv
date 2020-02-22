@@ -36,6 +36,8 @@ module.exports = {
         develop: false,
         // Purge only the main css file
         purgeOnly: ['/all.sass'],
+        // Do not purge patterns
+        whitelistPatterns: [/^is-/]
       },
     }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array
