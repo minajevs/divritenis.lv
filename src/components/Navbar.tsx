@@ -3,35 +3,38 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
-import { AllPagesQuery } from "../../graphql-types"
+import { MenuDataQuery } from "../../graphql-types"
 
 const query = graphql`
-  query AllPages {
-    allWordpressPage(sort: { fields: wordpress_id }, limit: 5) {
+  query MenuData {
+    allWordpressMenusMenusItems(filter: {slug: {eq: "main"}}) {
       edges {
         node {
-          title
-          slug
+          items {
+            title
+            url
+          }
         }
       }
     }
-  }`
+  }
+`
 
 const Navbar: React.FC = () => (
   <StaticQuery
     query={query}
-    render={(data: AllPagesQuery) => (
+    render={(data: MenuDataQuery) => (
       <nav className="navbar is-transparent">
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item">
               <figure className="image">
-                <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
+                <img src={logo} alt="LRA" />
               </figure>
             </Link>
           </div>
           <div className="navbar-start">
-            {data.allWordpressPage.edges.map(edge => (
+            {data.allWordpressMenusMenusItems.edges.map(edge => (
               <Link
                 className="navbar-item"
                 to={edge.node.slug ?? ""}

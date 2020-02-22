@@ -19,7 +19,9 @@ const Logo: React.FC<Props> = ({ logoAttr }) => {
     if (logoBlock === undefined) return null
 
     return (
-        <Image alt={logoBlock.alt} url={logoBlock.url} />
+        <div className="container">
+            <Image alt={logoBlock.alt} url={logoBlock.url} />
+        </div>
     )
 }
 
