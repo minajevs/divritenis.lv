@@ -1,21 +1,27 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Logo from '../components/homepage/Logo'
+
+import getBlock from '../utils/getWpBlockByName'
 
 import { HomePageByIdQuery } from '../../graphql-types'
 
-type TemplateProps = {
-  title: string,
-  content: string
+type Props = {
+  data: HomePageByIdQuery
 }
 
-export const PageTemplate: React.FC<TemplateProps> = ({ title, content }) => {
+const HomePage: React.FC<Props> = ({ data }) => {
+  const { wordpressPage: page } = data
+
+  const headerBlock = getBlock('lazyblock/header', page?.blocks ?? null)
+
+  if (headerBlock === null) return null
+
   return (
     <div className="container">
       <div className="columns">
         <div className="column is-one-third">
-          Logo
+          <Logo logoAttr={headerBlock.attrs?.logo ?? ""} />
         </div>
         <div className="column">
           <div className="columns">
@@ -105,19 +111,6 @@ export const PageTemplate: React.FC<TemplateProps> = ({ title, content }) => {
   )
 }
 
-type Props = {
-  data: HomePageByIdQuery
-}
-
-
-const HomePage: React.FC<Props> = ({ data }) => {
-  const { wordpressPage: page } = data
-
-  return (
-    <PageTemplate title={page?.title ?? ""} content={page?.content ?? ""} />
-  )
-}
-
 export default HomePage
 
 export const pageQuery = graphql`
@@ -125,6 +118,13 @@ export const pageQuery = graphql`
     wordpressPage(id: { eq: $id }) {
       title
       content
+      blocks {
+        blockName
+        attrs {
+          links
+          logo
+        }
+      }
     }
   }
 `
