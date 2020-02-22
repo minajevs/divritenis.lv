@@ -25,7 +25,7 @@ const HomePage: React.FC<Props> = ({ data }) => {
           <Logo logoAttr={headerBlock.attrs?.logo ?? ""} />
         </div>
         <div className="column">
-          <Links />
+          <Links linksAttr={headerBlock.attrs?.links ?? ""} />
         </div>
       </div>
       <div className="columns">

@@ -1,35 +1,48 @@
 import React from 'react'
 
+export type LinksBlock = {
+    text: string,
+    url: string
+}[]
+
 export type Link = {
     title: string,
     url: string
 }
 
-const Links: React.FC = () => {
+export type Props = {
+    linksAttr: string
+}
+
+const Links: React.FC<Props> = ({ linksAttr }) => {
+    const linksBlock = JSON.parse(decodeURI(linksAttr)) as LinksBlock | undefined
+
+    if (linksBlock === undefined) return null
+
     return (
         <>
-        <div className="columns">
-            <div className="column">
-                Zinas
+            <div className="columns">
+                <div className="column">
+                    Zinas
             </div>
-            <div className="column">
-                Noderigi
+                <div className="column">
+                    Noderigi
             </div>
-            <div className="column">
-                Dokumenti
+                <div className="column">
+                    Dokumenti
             </div>
-        </div>
-        <div className="columns">
-            <div className="column">
-                Kalendars
+            </div>
+            <div className="columns">
+                <div className="column">
+                    Kalendars
                  </div>
-            <div className="column">
-                Drosiba
+                <div className="column">
+                    Drosiba
             </div>
-            <div className="column">
-                Apvieniba
+                <div className="column">
+                    Apvieniba
             </div>
-        </div>
+            </div>
         </>
     )
 }
