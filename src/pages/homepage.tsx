@@ -24,67 +24,91 @@ const HomePage: React.FC<Props> = ({ data }) => {
         <div className="column is-one-third">
           <Logo logoAttr={headerBlock.attrs?.logo ?? ""} />
         </div>
-        <div className="column">
+        <div className="column has-text-centered">
           <Links linksAttr={headerBlock.attrs?.links ?? ""} />
         </div>
       </div>
-      <div className="columns">
-        <div className="column is-one-third is-offset-two-thirds">
-          <div className="columns">
-            <div className="column">
-              Meklesana
-            </div>
-            <div className="column">
-              Socialie tikli
+      <div className="notification has-text-centered">
+        <div className="columns">
+          <div className="column is-one-third is-offset-two-thirds">
+            <div className="columns">
+              <div className="column">
+                Meklesana
+              </div>
+              <div className="column">
+                Socialie tikli
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="columns">
+      <div className="columns has-text-centered">
         <div className="column">
-          Zinas
+          <div className="notification">
+            Zinas
+           </div> 
         </div>
         <div className="column is-one-third">
-          Kalendars
+          <div className="notification">
+            Kalendars
+          </div>
         </div>
       </div>
-      <div className="columns">
+      <div className="columns has-text-centered">
         <div className="column">
           <div className="columns">
             <div className="column is-half">
-              Brauceja drosiba
+              <div className="notification">
+                Brauceja drosiba
+               </div> 
             </div>
             <div className="column is-half">
-              Noderigi
+              <div className="notification">
+                Noderigi
+               </div> 
             </div>
           </div>
           <div className="columns">
             <div className="column is-half">
-              Velosipeda drosiba
+              <div className="notification">
+                Velosipeda drosiba
+              </div>
             </div>
             <div className="column is-half">
-              J&A
+              <div className="notification">
+               J&A
+              </div>
             </div>
           </div>
         </div>
         <div className="column is-one-third">
-          Aptauja
+          <div className="notification full-height">
+           Aptauja
+          </div>
         </div>
       </div>
-      <div className="columns">
+      <div className="columns has-text-centered">
         <div className="column is-one-third">
-          Citi resursi
+          <div className="notification">
+            Citi resursi
           </div>
+        </div>
         <div className="column is-one-third">
-          Dokumenti
-          </div>
+          <div className="notification">
+            Dokumenti
+          </div> 
+        </div>
         <div className="column is-one-third">
+          <div className="notification">
           Par apvienibu
           </div>
+        </div>  
       </div>
       <div className="columns">
         <div className="column is-full">
-          Info par lapu
+          <div className="notification has-text-centered">
+            Info par lapu
+           </div> 
         </div>
       </div>
     </div>
