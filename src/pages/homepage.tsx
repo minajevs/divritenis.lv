@@ -12,23 +12,96 @@ type TemplateProps = {
 
 export const PageTemplate: React.FC<TemplateProps> = ({ title, content }) => {
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <div
-                className="content"
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
+    <div className="container">
+      <div className="columns">
+        <div className="column is-one-third">
+          Logo
+        </div>
+        <div className="column">
+          <div className="columns">
+            <div className="column">
+              Zinas
+            </div>
+            <div className="column">
+              Noderigi
+            </div>
+            <div className="column">
+              Dokumenti
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column">
+              Kalendars
+            </div>
+            <div className="column">
+              Drosiba
+            </div>
+            <div className="column">
+              Apvieniba
             </div>
           </div>
         </div>
       </div>
-    </section>
+      <div className="columns">
+        <div className="column is-one-third is-offset-two-thirds">
+          <div className="columns">
+            <div className="column">
+              Meklesana
+            </div>
+            <div className="column">
+              Socialie tikli
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column">
+          Zinas
+        </div>
+        <div className="column is-one-third">
+          Kalendars
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column">
+          <div className="columns">
+            <div className="column is-half">
+              Brauceja drosiba
+            </div>
+            <div className="column is-half">
+              Noderigi
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column is-half">
+              Velosipeda drosiba
+            </div>
+            <div className="column is-half">
+              J&A
+            </div>
+          </div>
+        </div>
+        <div className="column is-one-third">
+          Aptauja
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column is-one-third">
+          Citi resursi
+          </div>
+        <div className="column is-one-third">
+          Dokumenti
+          </div>
+        <div className="column is-one-third">
+          Par apvienibu
+          </div>
+      </div>
+      <div className="columns">
+        <div className="column is-full">
+          Info par lapu
+        </div>
+      </div>
+    </div>
   )
 }
 
