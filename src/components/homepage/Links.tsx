@@ -13,7 +13,7 @@ export type Props = {
 
 const Link: React.FC<LinkType> = (link) => {
     return (
-        <a href={link.url} className="is-uppercase has-text-weight-semibold">{link.title}</a>
+        <a href={link.url} className="is-uppercase has-text-weight-semibold">{link.text}</a>
     )
 }
 
@@ -29,21 +29,21 @@ const Links: React.FC<Props> = ({ linksAttr }) => {
                     <Link {...linksBlock[0]}/>
                 </div>
                 <div className="column">
-                    <Link title={links[1].title} url={links[1].url} />
+                    <Link {...linksBlock[1]} />
                 </div>
                 <div className="column">
-                    <Link title={links[2].title} url={links[2].url} />
+                    <Link {...linksBlock[2]} />
                 </div>
             </div>
             <div className="columns">
                 <div className="column">
-                    <Link title={links[3].title} url={links[3].url} />
+                    <Link {...linksBlock[3]} />
                 </div>
                 <div className="column">
-                    <Link title={links[4].title} url={links[4].url} />
+                    <Link {...linksBlock[4]} />
                 </div>
                 <div className="column">
-                    <Link title={links[5].title} url={links[5].url} />
+                    <Link {...linksBlock[5]} />
                 </div>
             </div>
         </>
