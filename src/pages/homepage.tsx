@@ -37,7 +37,7 @@ type Props = {
 }
 
 
-const Page: React.FC<Props> = ({ data }) => {
+const HomePage: React.FC<Props> = ({ data }) => {
   const { wordpressPage: page } = data
 
   return (
@@ -45,7 +45,7 @@ const Page: React.FC<Props> = ({ data }) => {
   )
 }
 
-export default Page
+export default HomePage
 
 export const pageQuery = graphql`
   query HomePageById($id: String) {
