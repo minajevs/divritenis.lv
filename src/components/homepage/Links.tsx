@@ -1,8 +1,14 @@
 import React from 'react'
 
+export type LinksBlock = LinkType[]
+
 export type LinkType = {
-    title: string,
+    text: string,
     url: string
+}
+
+export type Props = {
+    linksAttr: string
 }
 
 const Link: React.FC<LinkType> = (link) => {
@@ -11,20 +17,16 @@ const Link: React.FC<LinkType> = (link) => {
     )
 }
 
-const Links: React.FC = () => {
-    const links: LinkType[] = [
-        { title: 'test', url: 'url' },
-        { title: 'test', url: 'url' },
-        { title: 'test', url: 'url' },
-        { title: 'test', url: 'url' },
-        { title: 'test', url: 'url' },
-        { title: 'test', url: 'url' },
-    ]
+const Links: React.FC<Props> = ({ linksAttr }) => {
+    const linksBlock = JSON.parse(decodeURI(linksAttr)) as LinksBlock | undefined
+
+    if (linksBlock === undefined) return null
+
     return (
         <>
             <div className="columns">
                 <div className="column">
-                    <Link title={links[0].title} url={links[0].url} />
+                    <Link {...linksBlock[0]}/>
                 </div>
                 <div className="column">
                     <Link title={links[1].title} url={links[1].url} />
