@@ -4,14 +4,13 @@ type ImgSizes = '16' | '24' | '32' | '48' | '64' | '96' | '128'
 
 export type Props = {
     alt: string,
-    url: string,
-    size: ImgSizes | null
+    url: string
 }
 
-export const Image: React.FC<Props> = ({ alt, url, size = '128' }) => {
+export const Image: React.FC<Props> = ({ alt, url }) => {
     return (
-        <figure className={`image is-${size}x${size}`}>
-            <img src="https://bulma.io/images/placeholders/256x256.png" />
+        <figure className={`image is-2by1`}>
+            <img src={url} alt={alt} />
         </figure>
     )
 }
