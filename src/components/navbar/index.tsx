@@ -6,6 +6,7 @@ import Logo from './Logo'
 import Links from './Links'
 
 import { MenuDataQuery } from "../../../graphql-types"
+import SocialLinks from './SocialLinks'
 
 const query = graphql`
   query MenuData {
@@ -37,16 +38,17 @@ const Navbar: React.FC = () => (
             </div>
           </div>
         </nav>
-        <div className="notification has-text-centered">
-          <div className="columns">
+
+        <div className="columns header-row">
+          <div className="container">
             <div className="column is-one-third is-offset-two-thirds">
-              <div className="columns">
+              <div className="columns is-vcentered has-text-centered">
                 <div className="column">
                   Meklesana
-          </div>
+                </div>
                 <div className="column">
-                  Socialie tikli
-          </div>
+                  <SocialLinks />
+                </div>
               </div>
             </div>
           </div>

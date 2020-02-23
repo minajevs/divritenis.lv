@@ -1,17 +1,52 @@
 @import "~bulma/sass/utilities/initial-variables"
 @import url("https://fonts.googleapis.com/css?family=PT+Sans")
 
-// Config vars
-$kaldi-red: #FD461E
-$kaldi-red-invert: #fff
+// LRA colors
+$lra-red: #8c002c
+$lra-red-light: #c24154
+$lra-red-dark: #580001
 
-$primary: $kaldi-red
-$primary-invert: $kaldi-red-invert
+$lra-gray: #565555
+$lra-gray-light: #838181
+$lra-gray-dark: #2d2c2c
+
+// Config variables
+$primary: $lra-red
+$primary-invert: $lra-red-light
 
 $body-family: "PT Sans"
 
 $link: $primary !default
+$text: $lra-gray
+$dark: $lra-gray-dark
 
+$body-background-color: $white-bis
+
+$gap: 128px
+
+// Navbar styles
+$navbar-divider-padding: 0.5rem 2.5rem 0.5rem 1.5rem !default
+
+.navbar-item img
+  max-height: none !important
+
+.navbar-end .navbar-item
+  width: 100%
+  display: inline-block
+  text-align: center
+  padding: 0
+
+.header-row
+  background-color: whitesmoke
+  margin-top: 0 !important
+  .column
+    padding: 0.5em
+
+.social-icon
+  display: flex
+  align-items: center
+
+// General
 .content .taglist
   list-style: none
   margin-bottom: 0
@@ -28,7 +63,7 @@ $link: $primary !default
     margin-top: 0
 
 .pagination .navbar
-	justify-content: center
+  justify-content: center
 
 // Helper Classes
 .full-width-image-container

@@ -24,6 +24,14 @@ module.exports = {
         excludedRoutes: ["/wp/v2/users/me", "/acf/v2/options", "/wp/v2/settings", "/wp/v2/themes"],
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/
+        }
+      }
+    },
     'gatsby-plugin-sharp',
     'gatsby-plugin-typescript',
     'gatsby-plugin-typescript-checker',

@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Navbar from '../components/navbar'
+import Layout from '../components/Layout'
 
 import getBlock from '../utils/getWpBlockByName'
 
@@ -18,80 +18,77 @@ const HomePage: React.FC<Props> = ({ data }) => {
   if (headerBlock === null) return null
 
   return (
-    <>
-      <Navbar />
-      <div className="container">
-        <div className="columns has-text-centered">
-          <div className="column">
-            <div className="notification">
-              Zinas
+    <Layout>
+      <div className="columns has-text-centered">
+        <div className="column">
+          <div className="box">
+            Zinas
            </div>
-          </div>
-          <div className="column is-one-third">
-            <div className="notification">
-              Kalendars
-          </div>
-          </div>
         </div>
-        <div className="columns has-text-centered">
-          <div className="column">
-            <div className="columns">
-              <div className="column is-half">
-                <div className="notification">
-                  Brauceja drosiba
-               </div>
-              </div>
-              <div className="column is-half">
-                <div className="notification">
-                  Noderigi
-               </div>
-              </div>
-            </div>
-            <div className="columns">
-              <div className="column is-half">
-                <div className="notification">
-                  Velosipeda drosiba
-              </div>
-              </div>
-              <div className="column is-half">
-                <div className="notification">
-                  J&A
-              </div>
-              </div>
-            </div>
-          </div>
-          <div className="column is-one-third">
-            <div className="notification full-height">
-              Aptauja
-          </div>
-          </div>
-        </div>
-        <div className="columns has-text-centered">
-          <div className="column is-one-third">
-            <div className="notification">
-              Citi resursi
-          </div>
-          </div>
-          <div className="column is-one-third">
-            <div className="notification">
-              Dokumenti
-          </div>
-          </div>
-          <div className="column is-one-third">
-            <div className="notification">
-              Par apvienibu
-          </div>
-          </div>
-        </div>
-        <div className="columns">
-          <div className="column is-full">
-            <div className="notification has-text-centered">
-              Info par lapu
-           </div>
+        <div className="column is-one-third">
+          <div className="box">
+            Kalendars
           </div>
         </div>
       </div>
-    </>
+      <div className="columns has-text-centered">
+        <div className="column">
+          <div className="columns">
+            <div className="column is-half">
+              <div className="box">
+                Brauceja drosiba
+               </div>
+            </div>
+            <div className="column is-half">
+              <div className="box">
+                Noderigi
+               </div>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column is-half">
+              <div className="box">
+                Velosipeda drosiba
+              </div>
+            </div>
+            <div className="column is-half">
+              <div className="box">
+                J&A
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="column is-one-third">
+          <div className="box full-height">
+            Aptauja
+          </div>
+        </div>
+      </div>
+      <div className="columns has-text-centered">
+        <div className="column is-one-third">
+          <div className="box">
+            Citi resursi
+          </div>
+        </div>
+        <div className="column is-one-third">
+          <div className="box">
+            Dokumenti
+          </div>
+        </div>
+        <div className="column is-one-third">
+          <div className="box">
+            Par apvienibu
+          </div>
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column is-full">
+          <div className="box has-text-centered">
+            Info par lapu
+           </div>
+        </div>
+      </div>
+    </Layout>
   )
 }
 

@@ -32,9 +32,9 @@ const Link: React.FC<LinkType> = (link) => {
 const Links: React.FC<Props> = ({ menuItems }) => {
     return (
         <>
-            <div className="columns is-multiline">
-                {menuItems?.map(item => (
-                    <div className="column is-one-third" key={item?.url ?? 0}>
+            <div className="columns is-multiline is-gapless is-vcentered">
+                {menuItems?.map((item, index) => (
+                    <div className="column is-one-third" key={index}>
                         <Link title={item?.title ?? ""} url={item?.url ?? ""} />
                     </div>
                 ))}
