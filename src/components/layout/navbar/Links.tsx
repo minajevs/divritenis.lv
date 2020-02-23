@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 
-import { MenuDataQuery } from "../../../graphql-types"
+import { MenuDataQuery } from "../../../../graphql-types"
 
 type MenuQueryItems = MenuDataQuery['allWordpressMenusMenusItems']['edges'][0]['node']['items']
 

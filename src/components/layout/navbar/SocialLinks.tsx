@@ -1,6 +1,6 @@
 import React from 'react'
 import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io'
-import DraugiemIcon from '../../img/draugiem-icon.inline.svg'
+import DraugiemIcon from '../../../img/draugiem-icon.inline.svg'
 
 export type Props = {}
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import PostList from '../components/PostList'
 
 import { AuthorPageQuery, PostListFieldsFragment } from "../../graphql-types"

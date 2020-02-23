@@ -1,11 +1,10 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import github from '../../img/github-icon.svg'
 
 import Logo from './Logo'
 import Links from './Links'
 
-import { MenuDataQuery } from "../../../graphql-types"
+import { MenuDataQuery } from "../../../../graphql-types"
 import SocialLinks from './SocialLinks'
 
 const query = graphql`
