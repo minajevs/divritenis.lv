@@ -44,7 +44,7 @@ const Navbar: React.FC = () => (
             <div className="column is-one-third is-offset-two-thirds">
               <div className="columns is-vcentered has-text-centered">
                 <div className="column">
-                  Meklesana
+                  Meklēšana
                 </div>
                 <div className="column">
                   <SocialLinks />

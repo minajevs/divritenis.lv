@@ -22,12 +22,12 @@ const HomePage: React.FC<Props> = ({ data }) => {
       <div className="columns has-text-centered">
         <div className="column">
           <div className="box">
-            Zinas
+            Ziņas
            </div>
         </div>
         <div className="column is-one-third">
           <div className="box">
-            Kalendars
+            Kalendārs
           </div>
         </div>
       </div>
@@ -36,19 +36,19 @@ const HomePage: React.FC<Props> = ({ data }) => {
           <div className="columns">
             <div className="column is-half">
               <div className="box">
-                Brauceja drosiba
+                Braucēja drošība
                </div>
             </div>
             <div className="column is-half">
               <div className="box">
-                Noderigi
+                Noderīgi
                </div>
             </div>
           </div>
           <div className="columns">
             <div className="column is-half">
               <div className="box">
-                Velosipeda drosiba
+                Velosipēda drošība
               </div>
             </div>
             <div className="column is-half">
@@ -77,7 +77,7 @@ const HomePage: React.FC<Props> = ({ data }) => {
         </div>
         <div className="column is-one-third">
           <div className="box">
-            Par apvienibu
+            Par apvienību
           </div>
         </div>
       </div>
