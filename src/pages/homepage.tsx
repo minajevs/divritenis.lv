@@ -81,13 +81,6 @@ const HomePage: React.FC<Props> = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="columns">
-        <div className="column is-full">
-          <div className="box has-text-centered">
-            Info par lapu
-           </div>
-        </div>
-      </div>
     </Layout>
   )
 }

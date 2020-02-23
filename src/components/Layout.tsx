@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import Navbar from './navbar'
+import Footer from './Footer'
 import './all.sass'
 
 const Layout: React.FC = ({ children }) => (
@@ -11,6 +12,7 @@ const Layout: React.FC = ({ children }) => (
     <div className="container">
       {children}
     </div>
+    <Footer />
   </>
 )
 
