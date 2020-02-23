@@ -2,13 +2,14 @@ import React from 'react'
 
 export type Props = {
     alt: string,
-    url: string
+    src: string,
+    className?: string
 }
 
-export const Image: React.FC<Props> = ({ alt, url }) => {
+export const Image: React.FC<Props> = ({ alt, src, className = "" }) => {
     return (
-        <figure className={`image is-2by1`}>
-            <img src={url} alt={alt} />
+        <figure className={`image ${className}`}>
+            <img src={src} alt={alt} />
         </figure>
     )
 }

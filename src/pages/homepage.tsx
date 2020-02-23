@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Logo from '../components/homepage/Logo'
-import Links from '../components/homepage/Links'
+import Layout from '../components/Layout'
 
 import getBlock from '../utils/getWpBlockByName'
 
@@ -19,37 +18,15 @@ const HomePage: React.FC<Props> = ({ data }) => {
   if (headerBlock === null) return null
 
   return (
-    <div className="container">
-      <div className="columns">
-        <div className="column is-one-third">
-          <Logo logoAttr={headerBlock.attrs?.logo ?? ""} />
-        </div>
-        <div className="column has-text-centered">
-          <Links linksAttr={headerBlock.attrs?.links ?? ""} />
-        </div>
-      </div>
-      <div className="notification has-text-centered">
-        <div className="columns">
-          <div className="column is-one-third is-offset-two-thirds">
-            <div className="columns">
-              <div className="column">
-                Meklesana
-              </div>
-              <div className="column">
-                Socialie tikli
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <Layout>
       <div className="columns has-text-centered">
         <div className="column">
-          <div className="notification">
+          <div className="box">
             Zinas
-           </div> 
+           </div>
         </div>
         <div className="column is-one-third">
-          <div className="notification">
+          <div className="box">
             Kalendars
           </div>
         </div>
@@ -58,60 +35,60 @@ const HomePage: React.FC<Props> = ({ data }) => {
         <div className="column">
           <div className="columns">
             <div className="column is-half">
-              <div className="notification">
+              <div className="box">
                 Brauceja drosiba
-               </div> 
+               </div>
             </div>
             <div className="column is-half">
-              <div className="notification">
+              <div className="box">
                 Noderigi
-               </div> 
+               </div>
             </div>
           </div>
           <div className="columns">
             <div className="column is-half">
-              <div className="notification">
+              <div className="box">
                 Velosipeda drosiba
               </div>
             </div>
             <div className="column is-half">
-              <div className="notification">
-               J&A
+              <div className="box">
+                J&A
               </div>
             </div>
           </div>
         </div>
         <div className="column is-one-third">
-          <div className="notification full-height">
-           Aptauja
+          <div className="box full-height">
+            Aptauja
           </div>
         </div>
       </div>
       <div className="columns has-text-centered">
         <div className="column is-one-third">
-          <div className="notification">
+          <div className="box">
             Citi resursi
           </div>
         </div>
         <div className="column is-one-third">
-          <div className="notification">
+          <div className="box">
             Dokumenti
-          </div> 
+          </div>
         </div>
         <div className="column is-one-third">
-          <div className="notification">
-          Par apvienibu
+          <div className="box">
+            Par apvienibu
           </div>
-        </div>  
+        </div>
       </div>
       <div className="columns">
         <div className="column is-full">
-          <div className="notification has-text-centered">
+          <div className="box has-text-centered">
             Info par lapu
-           </div> 
+           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 
