@@ -27,31 +27,24 @@ const Navbar: React.FC = () => (
     query={query}
     render={(data: MenuDataQuery) => (
       <>
-        <nav className="navbar is-transparent">
+        <nav role="header" aria-label="header row" className="navbar is-transparent">
           <div className="container">
             <div className="navbar-brand">
               <Logo />
             </div>
             <div className="navbar-end">
-              <Links menuItems={data.allWordpressMenusMenusItems.edges[0].node.items} />
+              <SocialLinks />
             </div>
           </div>
         </nav>
 
-        <div className="columns header-row">
+        <nav role="navigation" aria-label="main navigation" className="navbar is-transparent row">
           <div className="container">
-            <div className="column is-one-third is-offset-two-thirds">
-              <div className="columns is-vcentered has-text-centered">
-                <div className="column">
-                  Meklēšana
-                </div>
-                <div className="column">
-                  <SocialLinks />
-                </div>
-              </div>
+            <div className="navbar-menu">
+              <Links menuItems={data.allWordpressMenusMenusItems.edges[0].node.items} />
             </div>
           </div>
-        </div>
+        </nav>
       </>
     )}
   />

@@ -5,6 +5,7 @@ import Layout from '../components/layout'
 import getBlock from '../utils/getWpBlockByName'
 
 import { HomePageByIdQuery } from '../../graphql-types'
+import News from '../components/homepage/news'
 
 type Props = {
   data: HomePageByIdQuery
@@ -19,13 +20,11 @@ const HomePage: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout>
-      <div className="columns has-text-centered">
+      <div className="columns">
         <div className="column">
-          <div className="box">
-            Ziņas
-           </div>
+          <News />
         </div>
-        <div className="column is-one-third">
+        <div className="column is-one-quarter">
           <div className="box">
             Kalendārs
           </div>
@@ -59,7 +58,7 @@ const HomePage: React.FC<Props> = ({ data }) => {
           </div>
         </div>
         <div className="column is-one-third">
-          <div className="box full-height">
+          <div className="box is-full-height">
             Aptauja
           </div>
         </div>
