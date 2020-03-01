@@ -21,7 +21,7 @@ module.exports = {
         auth: {},
         verboseOutput: false,
         // prevents weird console errors: https://github.com/gatsbyjs/gatsby/issues/7079
-        excludedRoutes: ["/wp/v2/users/me", "/acf/v2/options", "/wp/v2/settings", "/wp/v2/themes"],
+        excludedRoutes: ["/wp/v2/users/me", "/acf/v2/options", "/wp/v2/settings", "/wp/v2/themes", "/lazy-blocks/v1/block-render", "/lazy-blocks/v1/update-block-data"],
       },
     },
     {

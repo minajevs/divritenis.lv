@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Image from '../common/Image'
+import Image from '../../common/Image'
 
-import logo from '../../img/logo.svg'
+import logo from '../../../img/logo.svg'
 
 
 export type LogoBlock = {
