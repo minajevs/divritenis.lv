@@ -1,19 +1,11 @@
 import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
+import { Link as GatsbyLink, graphql, useStaticQuery } from 'gatsby'
 
 import { MenuDataQuery } from "../../../graphql-types"
-
-type MenuQueryItems = MenuDataQuery['allWordpressMenusMenusItems']['edges'][0]['node']['items']
-
-export type LinksBlock = LinkType[]
 
 export type LinkType = {
     title: string,
     url: string
-}
-
-export type Props = {
-    menuItems: MenuDataQuery['allWordpressMenusMenusItems']['edges'][0]['node']['items']
 }
 
 const Link: React.FC<LinkType> = (link) => {
@@ -29,11 +21,28 @@ const Link: React.FC<LinkType> = (link) => {
     )
 }
 
-const Links: React.FC<Props> = ({ menuItems }) => {
+const query = graphql`
+  query MenuData {
+    allWordpressMenusMenusItems(filter: {slug: {eq: "main"}}) {
+      edges {
+        node {
+          items {
+            title
+            url
+          }
+        }
+      }
+    }
+  }
+`
+
+const Links: React.FC = () => {
+    const data = useStaticQuery<MenuDataQuery>(query)
+    const { items } = data.allWordpressMenusMenusItems.edges[0].node
     return (
         <>
             <div className="columns is-multiline is-gapless is-vcentered">
-                {menuItems?.map((item, index) => (
+                {items?.map((item, index) => (
                     <div className="column is-one-third" key={index}>
                         <Link title={item?.title ?? ""} url={item?.url ?? ""} />
                     </div>
