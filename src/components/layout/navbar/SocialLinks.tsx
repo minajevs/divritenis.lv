@@ -7,7 +7,7 @@ export type Props = {}
 // TODO: Source links from Wordpress?
 export const SocialLinks: React.FC = () => {
     return (
-        <div className="columns">
+        <div className="columns social-links">
             <SocialLink title="Facebook" url="/"><IoLogoFacebook size="2em" /></SocialLink>
             <SocialLink title="Instagram" url="/"><IoLogoInstagram size="2em" /></SocialLink>
             <SocialLink title="Twitter" url="/"><IoLogoTwitter size="2em" /></SocialLink>

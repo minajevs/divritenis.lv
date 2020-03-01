@@ -23,23 +23,20 @@ const Link: React.FC<LinkType> = (link) => {
             to={link.url}
             key={link.url}
         >
-            <span className="is-uppercase has-text-weight-semibold">{link.title}</span>
+            <span className="is-uppercase has-text-weight-semibold is-full-width">{link.title}</span>
         </GatsbyLink>
 
     )
 }
 
 const Links: React.FC<Props> = ({ menuItems }) => {
-    return (
-        <>
-            <div className="columns is-multiline is-gapless is-vcentered">
-                {menuItems?.map((item, index) => (
-                    <div className="column is-one-third" key={index}>
-                        <Link title={item?.title ?? ""} url={item?.url ?? ""} />
-                    </div>
-                ))}
+    return (<div className="columns is-gapless is-vcentered is-full-width has-text-centered">
+        {menuItems?.map((item, index) => (
+            <div className="column" key={index} >
+                <Link title={item?.title ?? ""} url={item?.url ?? ""} />
             </div>
-        </>
+        ))}
+    </div>
     )
 }
 
