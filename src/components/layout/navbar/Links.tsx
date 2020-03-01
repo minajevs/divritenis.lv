@@ -1,43 +1,57 @@
 import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
+import { Link as GatsbyLink, graphql, useStaticQuery } from 'gatsby'
 
 import { MenuDataQuery } from "../../../../graphql-types"
 
-type MenuQueryItems = MenuDataQuery['allWordpressMenusMenusItems']['edges'][0]['node']['items']
-
-export type LinksBlock = LinkType[]
-
 export type LinkType = {
-    title: string,
-    url: string
+  title: string,
+  url: string,
+  className: string
 }
 
+const Link: React.FC<LinkType> = ({ url, title, className }) => {
+  return (
+    <GatsbyLink
+      className={className}
+      to={url}
+      key={url}
+    >
+      <span className="is-uppercase has-text-weight-semibold is-full-width">{title}</span>
+    </GatsbyLink>
+
+  )
+}
+
+const query = graphql`
+  query MenuData {
+    allWordpressMenusMenusItems(filter: {slug: {eq: "main"}}) {
+      edges {
+        node {
+          items {
+            title
+            url
+          }
+        }
+      }
+    }
+  }
+`
 export type Props = {
-    menuItems: MenuDataQuery['allWordpressMenusMenusItems']['edges'][0]['node']['items']
+  linkClassName?: string
 }
 
-const Link: React.FC<LinkType> = (link) => {
-    return (
-        <GatsbyLink
-            className="navbar-item"
-            to={link.url}
-            key={link.url}
-        >
-            <span className="is-uppercase has-text-weight-semibold is-full-width">{link.title}</span>
-        </GatsbyLink>
-
-    )
-}
-
-const Links: React.FC<Props> = ({ menuItems }) => {
-    return (<div className="columns is-gapless is-vcentered is-full-width has-text-centered">
-        {menuItems?.map((item, index) => (
-            <div className="column" key={index} >
-                <Link title={item?.title ?? ""} url={item?.url ?? ""} />
-            </div>
-        ))}
-    </div>
-    )
+const Links: React.FC<Props> = ({ linkClassName = "" }) => {
+  const data = useStaticQuery<MenuDataQuery>(query)
+  const { items } = data.allWordpressMenusMenusItems.edges[0].node
+  return (
+    <>
+      {items?.map((item, index) => (
+        <div className="column" key={index}>
+          <Link title={item?.title ?? ""} url={item?.url ?? ""} className={linkClassName} />
+        </div>
+      ))}
+    </>
+  )
 }
 
 export default Links

@@ -51,10 +51,17 @@ $navbar-divider-padding: 0.5rem 2.5rem 0.5rem 1.5rem !default
 
 // Footer
 $footer-background-color: whitesmoke
+$footer-padding: 0
 
 .footer
   margin-top: 3em
-  padding: 3em 1.5em !important
+  .content
+    padding: 0em 1.5em 3em !important
+  .footer-item
+    color: $text
+    padding: 0.25em
+    &:hover
+      color: $dark
 
 // Card variables
 $card-background-color: $white-bis

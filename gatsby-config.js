@@ -16,7 +16,7 @@ module.exports = {
         // The base url to your WP site.
         baseUrl: process.env.WP_URL,
         hostingWPCOM: false,
-        protocol: 'http',
+        protocol: 'https',
         useACF: true,
         auth: {},
         verboseOutput: false,
