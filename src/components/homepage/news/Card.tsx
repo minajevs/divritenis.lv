@@ -2,14 +2,20 @@ import React from 'react'
 
 export type Props = {
     title: string
+    excerpt: string
+    image: {
+        url: string
+        alt: string
+    }
+    path: string
 }
 
-export const Card: React.FC<Props> = ({ title }) => {
+export const Card: React.FC<Props> = ({ title, excerpt, image, path }) => {
     return (
         <div className="card">
             <div className="card-image">
                 <figure className="image is-2by1">
-                    <img src="https://via.placeholder.com/256x128.png" alt="Placeholder image" />
+                    <img src={image.url} alt={image.alt} />
                 </figure>
             </div>
             <div className="card-content">
@@ -18,10 +24,10 @@ export const Card: React.FC<Props> = ({ title }) => {
                 </p>
                 <div className="content">
                     <div className="excerpt">
-                        Latvijā pēdējā gada laikā ar velosipēdu pārvietojušies 35% iedzīvotāju, savukārt ikdienas braucēji ir 6% - tā liecina pēc
+                        {excerpt}
                     </div>
                     <div className="read-more-link">
-                        <a className="has-text-weight-semibold">Lasīt vairāk</a>
+                        <a className="has-text-weight-semibold" href={path}>Lasīt vairāk</a>
                     </div>
                 </div>
             </div>
