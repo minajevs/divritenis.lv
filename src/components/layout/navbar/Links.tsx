@@ -15,7 +15,7 @@ const Link: React.FC<LinkType> = (link) => {
             to={link.url}
             key={link.url}
         >
-            <span className="is-uppercase has-text-weight-semibold">{link.title}</span>
+            <span className="is-uppercase has-text-weight-semibold is-full-width">{link.title}</span>
         </GatsbyLink>
 
     )
@@ -41,9 +41,9 @@ const Links: React.FC = () => {
     const { items } = data.allWordpressMenusMenusItems.edges[0].node
     return (
         <>
-            <div className="columns is-multiline is-gapless is-vcentered">
+            <div className="columns is-gapless is-vcentered is-full-width has-text-centered">
                 {items?.map((item, index) => (
-                    <div className="column is-one-third" key={index}>
+                    <div className="column" key={index}>
                         <Link title={item?.title ?? ""} url={item?.url ?? ""} />
                     </div>
                 ))}

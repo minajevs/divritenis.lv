@@ -9,31 +9,24 @@ import SocialLinks from './SocialLinks'
 
 const Navbar: React.FC = () => (
   <>
-    <nav className="navbar is-transparent">
+    <nav role="header" aria-label="header row" className="navbar is-transparent">
       <div className="container">
         <div className="navbar-brand">
           <Logo />
         </div>
         <div className="navbar-end">
-          <Links />
+          <SocialLinks />
         </div>
       </div>
     </nav>
 
-    <div className="columns header-row">
+    <nav role="navigation" aria-label="main navigation" className="navbar is-transparent row">
       <div className="container">
-        <div className="column is-one-third is-offset-two-thirds">
-          <div className="columns is-vcentered has-text-centered">
-            <div className="column">
-              Meklesana
-                </div>
-            <div className="column">
-              <SocialLinks />
-            </div>
-          </div>
+        <div className="navbar-menu">
+          <Links />
         </div>
       </div>
-    </div>
+    </nav>
   </>
 )
 

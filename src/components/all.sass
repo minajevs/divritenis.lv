@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans")
 
 // LRA colors
-$lra-red: #8c002c
+$lra-red: #8D002D
 $lra-red-light: #c24154
 $lra-red-dark: #580001
 
@@ -10,9 +10,13 @@ $lra-gray: #565555
 $lra-gray-light: #838181
 $lra-gray-dark: #2d2c2c
 
+$lra-blue: #61859e
+$lra-blue-light: #92b8c7
+$lra-blue-dark: #233e54
+
 // Config variables
 $primary: $lra-red
-$primary-invert: $lra-red-light
+$primary-invert: $lra-blue
 
 $body-family: "PT Sans"
 
@@ -22,7 +26,7 @@ $dark: $lra-gray-dark
 
 $body-background-color: $white-bis
 
-$gap: 128px
+$gap: 64px
 
 // Navbar styles
 $navbar-divider-padding: 0.5rem 2.5rem 0.5rem 1.5rem !default
@@ -30,32 +34,33 @@ $navbar-divider-padding: 0.5rem 2.5rem 0.5rem 1.5rem !default
 .navbar-item img
   max-height: none !important
 
-.navbar-end .navbar-item
-  width: 100%
-  display: inline-block
-  text-align: center
-  padding: 0
-
-.header-row
+.navbar.row
   background-color: whitesmoke
-  margin-top: 0 !important
+  min-height: 0
+  margin-bottom: 1em
   .column
     padding: 0.5em
+  .container
+    min-height: 0
 
-.social-icon
-  display: flex
-  align-items: center
+.social-links
+  margin: auto 1em 0.5em !important
+  .social-icon
+    display: flex
+    align-items: center
 
 // Footer
 $footer-background-color: whitesmoke
 
 .footer
-  bottom: 0
-  left: 0
-  position: fixed
-  right: 0
-  z-index: 30
-  padding: 3rem 1.5rem !important
+  margin-top: 3em
+  padding: 3em 1.5em !important
+
+// Card variables
+$card-background-color: $white-bis
+$card-shadow: none
+$card-header-padding: 0.5em 0 0.25em 0
+$card-content-padding: 0
 
 // General
 .content .taglist
@@ -90,7 +95,10 @@ $footer-background-color: whitesmoke
 .margin-top-0
   margin-top: 0 !important
 
-.full-height
-  height: 100%
+.is-full-height
+  height: 100% !important
+
+.is-full-width
+  width: 100% !important
 
 @import "~bulma"
