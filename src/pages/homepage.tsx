@@ -28,55 +28,45 @@ const HomePage: React.FC<Props> = ({ data }) => {
           <div className="box">
             Kalendārs
           </div>
-        </div>
-      </div>
-      <div className="columns has-text-centered">
-        <div className="column">
-          <div className="columns">
-            <div className="column is-half">
-              <div className="box">
-                Braucēja drošība
-               </div>
-            </div>
-            <div className="column is-half">
-              <div className="box">
-                Noderīgi
-               </div>
-            </div>
-          </div>
-          <div className="columns">
-            <div className="column is-half">
-              <div className="box">
-                Velosipēda drošība
-              </div>
-            </div>
-            <div className="column is-half">
-              <div className="box">
-                J&A
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="column is-one-third">
-          <div className="box is-full-height">
+          <div className="box">
             Aptauja
           </div>
         </div>
       </div>
+      <div className="box is-uppercase">
+        <div className="columns is-vcentered">
+          <div className="column">
+            Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?
+          </div>
+          <div className="column is-one-quarter">
+            <button className="button is-uppercase">Kļūsti par brīvprātīgo!</button>
+          </div>
+          <div className="column is-one-quarter">
+            <button className="button is-uppercase">Kļūsti par biedru!</button>
+          </div>
+        </div>
+      </div>
       <div className="columns has-text-centered">
-        <div className="column is-one-third">
+        <div className="column is-half">
           <div className="box">
-            Citi resursi
+            Informācijas katalogi
           </div>
         </div>
-        <div className="column is-one-third">
+        <div className="column is-half">
           <div className="box">
-            Dokumenti
+            Velobraucēju drošība
           </div>
         </div>
-        <div className="column is-one-third">
+      </div>
+      <div className="columns has-text-centered">
+        <div className="column is-half">
           <div className="box">
-            Par apvienību
+            Jautājumi un atbildes
+          </div>
+        </div>
+        <div className="column is-half">
+          <div className="box">
+            Velosipēda drošība
           </div>
         </div>
       </div>
