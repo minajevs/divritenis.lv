@@ -33,9 +33,10 @@ const HomePage: React.FC<Props> = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="box is-uppercase">
+      <section className="hero is-primary">
+      <div className="hero-body">
         <div className="columns is-vcentered">
-          <div className="column">
+          <div className="column is-uppercase is-size-5 has-text-weight-semibold has-text-white">
             Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?
           </div>
           <div className="column is-one-quarter">
@@ -45,7 +46,9 @@ const HomePage: React.FC<Props> = ({ data }) => {
             <button className="button is-uppercase">Kļūsti par biedru!</button>
           </div>
         </div>
-      </div>
+        </div>
+      </section>
+      <br />
       <div className="columns has-text-centered">
         <div className="column is-half">
           <div className="box">
