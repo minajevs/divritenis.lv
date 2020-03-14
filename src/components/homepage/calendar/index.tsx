@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import FullCalendar from '@fullcalendar/react'
 
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -7,7 +8,7 @@ import momentPlugin from '@fullcalendar/moment'
 import { isSameDay, format } from 'date-fns'
 
 import './calendar.scss'
-import { VerboseFormattingArg, EventApi, View } from '@fullcalendar/core'
+import { VerboseFormattingArg, View } from '@fullcalendar/core'
 
 export type Props = {
 
@@ -33,12 +34,12 @@ type DayRenderArg = {
     el: HTMLElement
 }
 
-type CalendarEvent = {
+type CalendarEventType = {
     title: string
     date: Date
 }
 
-const renderDay = (events: CalendarEvent[]) => (arg: DayRenderArg) => {
+const renderDay = (events: CalendarEventType[]) => (arg: DayRenderArg) => {
     const dayEvents = events.filter(x => isSameDay(arg.date, x.date))
 
     if (dayEvents.length === 0) return
@@ -52,8 +53,13 @@ const renderDay = (events: CalendarEvent[]) => (arg: DayRenderArg) => {
 
 export const Calendar: React.FC<Props> = () => {
     const events = [
-        { title: 'Event 1', date: new Date() }
+        { title: 'Event 1', date: new Date(2020, 2, 2) },
+        { title: 'Event 1', date: new Date(2020, 2, 8) },
+        { title: 'Event 1', date: new Date(2020, 2, 20) },
+        { title: 'Event 1', date: new Date(2020, 1, 24) },
     ]
+
+    console.log(events)
     return (
         <FullCalendar
             defaultView="dayGridMonth"

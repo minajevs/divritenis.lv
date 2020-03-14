@@ -1,17 +1,15 @@
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
+@import '../../variables';
 
-// TODO: import from 'variables.scss'
-$lra-gray: #565555;
-$lra-gray-light: transparent;
-$lra-blue: rgba(97, 133, 158, 0.2);
-
-$border-style: 1px solid $lra-gray-light;
+$border-color: transparent;
+$border-style: 1px solid $border-color;
+$event-background: rgba(97, 133, 158, 0.2);
 
 .fc {
     background-color: white;
     td, th {
-        border-color: $lra-gray-light;
+        border-color: $border-color;
     }
 
     // Toolbar
@@ -59,7 +57,7 @@ $border-style: 1px solid $lra-gray-light;
             .fc-bg {
                 padding: 0;
                 .fc-today {
-                    background-color: $lra-blue;
+                    background-color: $event-background;
                 }
             }
         }
@@ -68,7 +66,7 @@ $border-style: 1px solid $lra-gray-light;
     // Event
     .has-event {
         font-weight: 700;
-        color: red;
+        color: $lra-red;
     }
 
 }
