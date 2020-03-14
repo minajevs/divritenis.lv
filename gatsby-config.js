@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + WordPress Starter',
+    title: 'Divritenis.lv',
   },
   plugins: [
     'gatsby-plugin-graphql-codegen',
@@ -43,7 +43,7 @@ module.exports = {
         // Activates purging in gatsby develop
         develop: false,
         // Purge only the main css file
-        purgeOnly: ['/all.sass'],
+        purgeOnly: ['/all.scss'],
         // Do not purge patterns
         whitelistPatterns: [/^is-/]
       },
