@@ -1,5 +1,6 @@
 import React from 'react'
 import Links from './navbar/Links'
+import './footer.scss'
 
 export type Props = {}
 
