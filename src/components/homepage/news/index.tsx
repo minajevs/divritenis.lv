@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import Card from './Card'
 
-import './news.sass'
+import './news.scss'
 
 import { LatestNewsQuery } from '../../../../graphql-types'
 

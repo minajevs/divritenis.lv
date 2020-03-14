@@ -1,11 +1,10 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
 
 import Logo from './Logo'
 import Links from './Links'
-
-import { MenuDataQuery } from "../../../../graphql-types"
 import SocialLinks from './SocialLinks'
+
+import './navbar.scss'
 
 const Navbar: React.FC = () => (
   <>
