@@ -1,0 +1,75 @@
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
+// TODO: import from 'variables.scss'
+$lra-gray: #565555;
+$lra-gray-light: transparent;
+$lra-blue: rgba(97, 133, 158, 0.2);
+
+$border-style: 1px solid $lra-gray-light;
+
+.fc {
+    background-color: white;
+    td, th {
+        border-color: $lra-gray-light;
+    }
+
+    // Toolbar
+    .fc-toolbar.fc-header-toolbar {
+        margin: 0;
+    
+        border: $border-style;
+    
+        .fc-button {
+            background-color: unset;
+            color: $lra-gray;
+            border: none;
+            border-radius: unset;
+            height: 100%;
+        }
+    
+        h2 {
+            font-size: 1em;
+            font-weight: 700;
+        }
+    }
+
+    // Header
+    .fc-widget-header {
+        font-weight: 700;
+        text-align: center;
+        color: $lra-gray;
+    }
+
+    // Body
+    .fc-body {
+        .fc-row {
+            min-height: unset;
+            .fc-day-number {
+                float: unset;
+                display: block; 
+                text-align: center;
+                padding: 0; 
+                margin: 0 auto;
+            }
+
+            .fc-content-skeleton {
+                padding: 0;
+            }
+            .fc-bg {
+                padding: 0;
+                .fc-today {
+                    background-color: $lra-blue;
+                }
+            }
+        }
+    }
+
+    // Event
+    .has-event {
+        font-weight: 700;
+        color: red;
+    }
+
+}
+

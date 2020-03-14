@@ -6,6 +6,7 @@ import getBlock from '../utils/getWpBlockByName'
 
 import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
+import Calendar from '../components/homepage/calendar'
 
 type Props = {
   data: HomePageByIdQuery
@@ -25,27 +26,22 @@ const HomePage: React.FC<Props> = ({ data }) => {
           <News />
         </div>
         <div className="column is-one-quarter">
-          <div className="box">
-            Kalendārs
-          </div>
-          <div className="box">
-            Aptauja
-          </div>
+          <Calendar />
         </div>
       </div>
       <section className="hero is-primary">
-      <div className="hero-body">
-        <div className="columns is-vcentered">
-          <div className="column is-uppercase is-size-5 has-text-weight-semibold has-text-white">
-            Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?
+        <div className="hero-body">
+          <div className="columns is-vcentered">
+            <div className="column is-uppercase is-size-5 has-text-weight-semibold has-text-white">
+              Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?
           </div>
-          <div className="column is-one-quarter">
-            <button className="button is-uppercase">Kļūsti par brīvprātīgo!</button>
+            <div className="column is-one-quarter">
+              <button className="button is-uppercase">Kļūsti par brīvprātīgo!</button>
+            </div>
+            <div className="column is-one-quarter">
+              <button className="button is-uppercase">Kļūsti par biedru!</button>
+            </div>
           </div>
-          <div className="column is-one-quarter">
-            <button className="button is-uppercase">Kļūsti par biedru!</button>
-          </div>
-        </div>
         </div>
       </section>
       <br />
