@@ -1,0 +1,27 @@
+// Navbar settings 
+.navbar-item img {
+  max-height: none !important
+}
+
+.navbar.row {
+  background-color: whitesmoke;
+  min-height: 0;
+  margin-bottom: 1em;
+
+  .column {
+    padding: 0.5em;
+  }
+
+  .container {
+    min-height: 0;
+  }
+}
+
+.social-links {
+  margin: auto 1em 0.5em !important;
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+  }
+}

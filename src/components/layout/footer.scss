@@ -1,0 +1,19 @@
+@import "../variables";
+
+.footer {
+  margin-top: 3em;
+  background-color: whitesmoke !important;
+  padding: 0 !important;
+
+  .content {
+    padding: 0em 1.5em 3em !important;
+  }
+
+  .footer-item {
+    color: $text;
+    padding: 0.25em;
+    &:hover {
+      color: $dark
+    }
+  }
+}

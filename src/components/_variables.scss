@@ -1,0 +1,32 @@
+@import "~bulma/sass/utilities/initial-variables";
+
+// LRA colors
+$lra-red: #8D002D;
+$lra-red-light: #c24154;
+$lra-red-dark: #580001;
+
+$lra-gray: #565555;
+$lra-gray-light: #838181;
+$lra-gray-dark: #2d2c2c;
+
+$lra-blue: #61859e;
+$lra-blue-light: #92b8c7;
+$lra-blue-dark: #233e54;
+
+// General settings
+$primary: $lra-red;
+$primary-invert: $lra-blue;
+
+$body-family: "PT Sans";
+
+$link: $primary !default;
+$text: $lra-gray;
+$dark: $lra-gray-dark;
+
+$body-background-color: $white-bis;
+
+$button-color: #FFFFFF;
+$button-background-color: $lra-red;
+$button-hover-color: $lra-gray;
+
+$gap: 64px;

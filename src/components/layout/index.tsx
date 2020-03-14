@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 
 import Navbar from './navbar'
 import Footer from './Footer'
-import '../all.sass'
+import '../all.scss'
 
 const Layout: React.FC = ({ children }) => (
   <>
