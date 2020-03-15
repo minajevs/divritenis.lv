@@ -6,6 +6,7 @@ import getBlock from '../utils/getWpBlockByName'
 
 import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
+import Hero from '../components/homepage/hero'
 
 type Props = {
   data: HomePageByIdQuery
@@ -33,21 +34,11 @@ const HomePage: React.FC<Props> = ({ data }) => {
           </div>
         </div>
       </div>
-      <section className="hero is-primary">
-      <div className="hero-body">
-        <div className="columns is-vcentered">
-          <div className="column is-uppercase is-size-5 has-text-weight-semibold has-text-white">
-            Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?
-          </div>
-          <div className="column is-one-quarter">
-            <button className="button is-uppercase">Kļūsti par brīvprātīgo!</button>
-          </div>
-          <div className="column is-one-quarter">
-            <button className="button is-uppercase">Kļūsti par biedru!</button>
-          </div>
-        </div>
-        </div>
-      </section>
+      <Hero
+        text="Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?"
+        leftButtonText="Kļūsti par brīvprātīgo!"
+        rightButtonText="Kļūsti par biedru!"
+      />
       <br />
       <div className="columns has-text-centered">
         <div className="column is-half">
