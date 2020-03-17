@@ -6,11 +6,8 @@ import getBlock from '../utils/getWpBlockByName'
 
 import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
-<<<<<<< Updated upstream
-=======
-import Hero from '../components/homepage/hero'
+
 import Infocard from '../components/homepage/infocard'
->>>>>>> Stashed changes
 
 type Props = {
   data: HomePageByIdQuery
@@ -39,18 +36,18 @@ const HomePage: React.FC<Props> = ({ data }) => {
         </div>
       </div>
       <section className="hero is-primary">
-      <div className="hero-body">
-        <div className="columns is-vcentered">
-          <div className="column is-uppercase is-size-5 has-text-weight-semibold has-text-white">
-            Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?
+        <div className="hero-body">
+          <div className="columns is-vcentered">
+            <div className="column is-uppercase is-size-5 has-text-weight-semibold has-text-white">
+              Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?
           </div>
-          <div className="column is-one-quarter">
-            <button className="button is-uppercase">Kļūsti par brīvprātīgo!</button>
+            <div className="column is-one-quarter">
+              <button className="button is-uppercase">Kļūsti par brīvprātīgo!</button>
+            </div>
+            <div className="column is-one-quarter">
+              <button className="button is-uppercase">Kļūsti par biedru!</button>
+            </div>
           </div>
-          <div className="column is-one-quarter">
-            <button className="button is-uppercase">Kļūsti par biedru!</button>
-          </div>
-        </div>
         </div>
       </section>
       <br />
@@ -94,10 +91,6 @@ export const pageQuery = graphql`
       content
       blocks {
         blockName
-        attrs {
-          links
-          logo
-        }
       }
     }
   }
