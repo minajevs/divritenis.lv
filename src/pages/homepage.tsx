@@ -6,6 +6,11 @@ import getBlock from '../utils/getWpBlockByName'
 
 import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
+<<<<<<< Updated upstream
+=======
+import Hero from '../components/homepage/hero'
+import Infocard from '../components/homepage/infocard'
+>>>>>>> Stashed changes
 
 type Props = {
   data: HomePageByIdQuery
@@ -51,9 +56,12 @@ const HomePage: React.FC<Props> = ({ data }) => {
       <br />
       <div className="columns has-text-centered">
         <div className="column is-half">
-          <div className="box">
-            Informācijas katalogi
-          </div>
+          <Infocard
+            title="Velosipēda drošība"
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+            img="https://www.diabetes.co.uk/wp-content/uploads/2019/01/iStock-1002107936.jpg"
+            infoUrl="/"
+          />
         </div>
         <div className="column is-half">
           <div className="box">
