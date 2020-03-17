@@ -6,6 +6,7 @@ import getBlock from '../utils/getWpBlockByName'
 
 import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
+import Hero from '../components/homepage/hero'
 
 import Infocard from '../components/homepage/infocard'
 
@@ -16,9 +17,7 @@ type Props = {
 const HomePage: React.FC<Props> = ({ data }) => {
   const { wordpressPage: page } = data
 
-  const headerBlock = getBlock('lazyblock/header', page?.blocks ?? null)
-
-  if (headerBlock === null) return null
+  const heroBlock = getBlock('lazyblock/hero', page?.blocks ?? null)
 
   return (
     <Layout>
@@ -35,21 +34,14 @@ const HomePage: React.FC<Props> = ({ data }) => {
           </div>
         </div>
       </div>
-      <section className="hero is-primary">
-        <div className="hero-body">
-          <div className="columns is-vcentered">
-            <div className="column is-uppercase is-size-5 has-text-weight-semibold has-text-white">
-              Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?
-          </div>
-            <div className="column is-one-quarter">
-              <button className="button is-uppercase">Kļūsti par brīvprātīgo!</button>
-            </div>
-            <div className="column is-one-quarter">
-              <button className="button is-uppercase">Kļūsti par biedru!</button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero
+        text={heroBlock?.attrs?.text ?? ''}
+        leftButtonText={heroBlock?.attrs?.left_button_text ?? ''}
+        leftButtonLink={heroBlock?.attrs?.left_button_link ?? ''}
+        rightButtonText={heroBlock?.attrs?.right_button_text ?? ''}
+        rightButtonLink={heroBlock?.attrs?.right_button_link ?? ''}
+        img={JSON.parse(decodeURI(heroBlock?.attrs?.background_image ?? ''))['url']}
+      />
       <br />
       <div className="columns has-text-centered">
         <div className="column is-half">
@@ -85,13 +77,21 @@ const HomePage: React.FC<Props> = ({ data }) => {
 export default HomePage
 
 export const pageQuery = graphql`
-  query HomePageById($id: String) {
-    wordpressPage(id: { eq: $id }) {
-      title
-      content
-      blocks {
-        blockName
+query HomePageById($id: String) {
+  wordpressPage(id: {eq: $id}) {
+    title
+    content
+    blocks {
+      blockName
+      attrs {
+        left_button_link
+        left_button_text
+        right_button_link
+        right_button_text
+        text
+        background_image
       }
     }
   }
+}
 `
