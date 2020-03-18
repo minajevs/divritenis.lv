@@ -1,6 +1,6 @@
 import React from 'react'
-import './infocard.scss'
 import { Link as GatsbyLink } from 'gatsby'
+import './infocard.scss'
 
 export type Props = {
     title: string
