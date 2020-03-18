@@ -2,11 +2,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 
-import getBlock from '../utils/getWpBlockByName'
+import { getWpBlockByName, getWpBlocksByName } from '../utils/getWpBlockByName'
 
 import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
 import Hero from '../components/homepage/hero'
+import InfocardList from '../components/homepage/infocard'
 
 type Props = {
   data: HomePageByIdQuery
@@ -15,7 +16,8 @@ type Props = {
 const HomePage: React.FC<Props> = ({ data }) => {
   const { wordpressPage: page } = data
 
-  const heroBlock = getBlock('lazyblock/hero', page?.blocks ?? null)
+  const heroBlock = getWpBlockByName('lazyblock/hero', page?.blocks ?? null)
+  const infocardBlocks = getWpBlocksByName('lazyblock/infocard', page?.blocks ?? null)
 
   return (
     <Layout>
@@ -41,30 +43,7 @@ const HomePage: React.FC<Props> = ({ data }) => {
         img={JSON.parse(decodeURI(heroBlock?.attrs?.background_image ?? ''))['url']}
       />
       <br />
-      <div className="columns has-text-centered">
-        <div className="column is-half">
-          <div className="box">
-            Informācijas katalogi
-          </div>
-        </div>
-        <div className="column is-half">
-          <div className="box">
-            Velobraucēju drošība
-          </div>
-        </div>
-      </div>
-      <div className="columns has-text-centered">
-        <div className="column is-half">
-          <div className="box">
-            Jautājumi un atbildes
-          </div>
-        </div>
-        <div className="column is-half">
-          <div className="box">
-            Velosipēda drošība
-          </div>
-        </div>
-      </div>
+      <InfocardList blocks={infocardBlocks} />
     </Layout>
   )
 }
@@ -85,6 +64,9 @@ query HomePageById($id: String) {
         right_button_text
         text
         background_image
+        title
+        image
+        url
       }
     }
   }
