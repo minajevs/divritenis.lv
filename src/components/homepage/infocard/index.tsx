@@ -1,35 +1,30 @@
 import React from 'react'
 import './infocard.scss'
-import { Link as GatsbyLink } from 'gatsby'
+import { Wordpress__PageBlocks } from '../../../../graphql-types'
+import Infocard from '../infocard/Infocard'
 
 export type Props = {
-    title: string
-    text: string
-    img: string
-    infoUrl: string
+    blocks: (Wordpress__PageBlocks | null)[] | null
 }
 
-export const Infocard: React.FC<Props> = ({ title, text, img, infoUrl }) => {
+export const InfocardList: React.FC<Props> = ({ blocks }) => {
     return (
-        <div className="card infocard" style={{ background: `url("${img}")` }}>
-            <div className="card-header is-shadowless">
-                <div className="title is-5 has-text-weight-medium">{title}</div>
-            </div>
-            <div className="card-content">
-                <div className="columns">
-                    <div className="column is-narrow has-text-left">
-                        <div className="infocard-text">{text}</div>
-                        <br />
-                        <GatsbyLink
-                            key={infoUrl}
-                            to={infoUrl}>
-                            <button className="button is-uppercase is-inverted">Lasīt vairāk</button>
-                        </GatsbyLink>
-                    </div>
-                </div>
-            </div>
+        <div className="columns has-text-centered is-multiline infocard-list">
+            {blocks?.map((block, i) => {
+                if (block === null) return null
+                const { attrs } = block
+
+                return (<div className="column is-half" key={i} >
+                    <Infocard
+                        title={attrs?.title ?? ""}
+                        text={attrs?.text ?? ""}
+                        img={JSON.parse(decodeURI(attrs?.image ?? ''))['url']}
+                        infoUrl={attrs?.url ?? ""}
+                    />
+                </div>)
+            })}
         </div>
     )
 }
 
-export default Infocard
+export default InfocardList
