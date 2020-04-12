@@ -67,7 +67,41 @@ $event-background: rgba(97, 133, 158, 0.2);
     .has-event {
         font-weight: 700;
         color: $lra-red;
-    }
+        cursor: pointer;
 
+        position: relative;
+        text-decoration: none;
+
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 70%;
+            height: 1px;
+            bottom: 0;
+            left: 15%;
+            background-color: $lra-red;
+            visibility: hidden;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transition: all 0.1s ease-in-out 0s;
+            transition: all 0.1s ease-in-out 0s;
+        }
+        
+        &:hover:before {
+            visibility: visible;
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+        }
+    }
 }
 
+.events {
+    background-color: white;
+    margin: 0.5em 0 0 0;
+    
+    .date {
+        border-radius: 0;   
+        margin-right: 0.5em;
+    }
+}

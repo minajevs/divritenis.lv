@@ -1,14 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import FullCalendar from '@fullcalendar/react'
+import React, { useState } from 'react'
 
+import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import momentPlugin from '@fullcalendar/moment'
+import interactionPlugin from '@fullcalendar/interaction'
+import { VerboseFormattingArg, View } from '@fullcalendar/core'
 
 import { isSameDay, format } from 'date-fns'
 
 import './calendar.scss'
-import { VerboseFormattingArg, View } from '@fullcalendar/core'
+import Events, { CalendarEventType } from './Events'
 
 export type Props = {
 
@@ -34,11 +35,6 @@ type DayRenderArg = {
     el: HTMLElement
 }
 
-type CalendarEventType = {
-    title: string
-    date: Date
-}
-
 const renderDay = (events: CalendarEventType[]) => (arg: DayRenderArg) => {
     const dayEvents = events.filter(x => isSameDay(arg.date, x.date))
 
@@ -52,35 +48,43 @@ const renderDay = (events: CalendarEventType[]) => (arg: DayRenderArg) => {
 }
 
 export const Calendar: React.FC<Props> = () => {
+    const [selectedDay, selectDay] = useState<Date | null>(null)
+
     const events = [
-        { title: 'Event 1', date: new Date(2020, 2, 2) },
-        { title: 'Event 1', date: new Date(2020, 2, 8) },
-        { title: 'Event 1', date: new Date(2020, 2, 20) },
-        { title: 'Event 1', date: new Date(2020, 1, 24) },
+        { title: 'Event 1', date: new Date(2020, 3, 2) },
+        { title: 'Event 2/1', date: new Date(2020, 3, 8) },
+        { title: 'Event 2/2', date: new Date(2020, 3, 8) },
+        { title: 'Event 2/3', date: new Date(2020, 3, 8) },
+        { title: 'Event 3', date: new Date(2020, 3, 20) },
+        { title: 'Event 4', date: new Date(2020, 2, 24) },
+        { title: 'Event 5', date: new Date(2020, 4, 24) },
     ]
 
-    console.log(events)
     return (
-        <FullCalendar
-            defaultView="dayGridMonth"
-            plugins={[dayGridPlugin, momentPlugin]}
+        <>
+            <FullCalendar
+                defaultView="dayGridMonth"
+                plugins={[dayGridPlugin, momentPlugin, interactionPlugin]}
 
-            themeSystem='standart'
-            height='auto'
+                themeSystem='standart'
+                height='auto'
 
-            header={{
-                left: 'prev',
-                center: 'title',
-                right: 'next'
-            }}
-            firstDay={1}
+                header={{
+                    left: 'prev',
+                    center: 'title',
+                    right: 'next'
+                }}
+                firstDay={1}
 
-            titleFormat={formatTitle}
-            columnHeaderFormat={formatColumnsHeader}
+                titleFormat={formatTitle}
+                columnHeaderFormat={formatColumnsHeader}
 
-            eventRender={_ => false}
-            dayRender={renderDay(events)}
-        />
+                eventRender={_ => false}
+                dayRender={renderDay(events)}
+                dateClick={event => selectDay(event.date)}
+            />
+            <Events events={events} selectedDate={selectedDay} />
+        </>
     )
 }
 

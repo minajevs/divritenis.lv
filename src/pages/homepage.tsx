@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 
-import getBlock from '../utils/getWpBlockByName'
+import { getWpBlockByName } from '../utils/getWpBlockByName'
 
 import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
@@ -15,10 +15,6 @@ type Props = {
 const HomePage: React.FC<Props> = ({ data }) => {
   const { wordpressPage: page } = data
 
-  const headerBlock = getBlock('lazyblock/header', page?.blocks ?? null)
-
-  if (headerBlock === null) return null
-
   return (
     <Layout>
       <div className="columns">
@@ -29,21 +25,6 @@ const HomePage: React.FC<Props> = ({ data }) => {
           <Calendar />
         </div>
       </div>
-      <section className="hero is-primary">
-        <div className="hero-body">
-          <div className="columns is-vcentered">
-            <div className="column is-uppercase is-size-5 has-text-weight-semibold has-text-white">
-              Vēlies uzlabot ikdienas velobraucēju dzīvi Rīgā vai visā Latvijā?
-          </div>
-            <div className="column is-one-quarter">
-              <button className="button is-uppercase">Kļūsti par brīvprātīgo!</button>
-            </div>
-            <div className="column is-one-quarter">
-              <button className="button is-uppercase">Kļūsti par biedru!</button>
-            </div>
-          </div>
-        </div>
-      </section>
       <br />
       <div className="columns has-text-centered">
         <div className="column is-half">
@@ -82,10 +63,6 @@ export const pageQuery = graphql`
       content
       blocks {
         blockName
-        attrs {
-          links
-          logo
-        }
       }
     }
   }

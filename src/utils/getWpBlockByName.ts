@@ -9,4 +9,4 @@ const getWpBlockByName = (name: string, blocks: (Wordpress__PageBlocks | null)[]
         : block
 }
 
-export default getWpBlockByName
+export { getWpBlockByName }
