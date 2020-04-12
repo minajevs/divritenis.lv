@@ -11,14 +11,6 @@ export type Props = {
     selectedDate: Date | null
 }
 
-const getShortMonthName = function (monthNum: number) {
-    const date = new Date()
-    date.setDate(1)
-    date.setMonth(monthNum)
-
-    return date.toLocaleString('lv-lv', { month: 'short' })
-}
-
 const Event: React.FC<{ event: CalendarEventType }> = ({ event }) => {
     return (<>
         <div className="column is-full event">
