@@ -9,4 +9,12 @@ const getWpBlockByName = (name: string, blocks: (Wordpress__PageBlocks | null)[]
         : block
 }
 
-export { getWpBlockByName }
+const getWpBlocksByName = (name: string, blocks: (Wordpress__PageBlocks | null)[] | null) => {
+    if (blocks === null) return null
+
+    return blocks.filter(x => x?.blockName === name)
+
+}
+
+export { getWpBlockByName, getWpBlocksByName }
+
