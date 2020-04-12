@@ -16,12 +16,11 @@ type Props = {
 
 const HomePage: React.FC<Props> = ({ data }) => {
   const { wordpressPage: page } = data
-
   const heroBlock = getWpBlockByName('lazyblock/hero', page?.blocks ?? null)
   const infocardBlocks = getWpBlocksByName('lazyblock/infocard', page?.blocks ?? null)
 
   return (
-    <Layout>
+    <Layout breadcrumbs={['/', '']}>
       <div className="columns">
         <div className="column">
           <News />
