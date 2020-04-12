@@ -8,14 +8,16 @@ import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
 import Hero from '../components/homepage/hero'
 import InfocardList from '../components/homepage/infocard'
+import { useBreadcrumbs } from '../utils/useBreadcrumbs'
 
 type Props = {
   data: HomePageByIdQuery
 }
 
 const HomePage: React.FC<Props> = ({ data }) => {
-  const { wordpressPage: page } = data
+  useBreadcrumbs('/')
 
+  const { wordpressPage: page } = data
   const heroBlock = getWpBlockByName('lazyblock/hero', page?.blocks ?? null)
   const infocardBlocks = getWpBlocksByName('lazyblock/infocard', page?.blocks ?? null)
 
@@ -51,24 +53,24 @@ const HomePage: React.FC<Props> = ({ data }) => {
 export default HomePage
 
 export const pageQuery = graphql`
-query HomePageById($id: String) {
-  wordpressPage(id: {eq: $id}) {
-    title
-    content
-    blocks {
-      blockName
-      attrs {
-        left_button_link
-        left_button_text
-        right_button_link
-        right_button_text
-        text
-        background_image
-        title
-        image
-        url
+  query HomePageById($id: String) {
+    wordpressPage(id: {eq: $id}) {
+      title
+      content
+      blocks {
+        blockName
+        attrs {
+          left_button_link
+          left_button_text
+          right_button_link
+          right_button_text
+          text
+          background_image
+          title
+          image
+          url
+        }
       }
     }
   }
-}
 `
