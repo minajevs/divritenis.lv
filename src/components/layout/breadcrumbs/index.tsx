@@ -1,25 +1,53 @@
-import React, { useContext } from 'react'
-import { BreadcrumbsItem, context } from '../../../utils/useBreadcrumbs'
+import React from 'react'
+import { Link as GatsbyLink } from 'gatsby'
 
-const Breadcrumbs: React.FC = props => {
-    const { items } = useContext(context)
+import './breadcrumbs.scss'
 
-    console.log(items)
+// Maps all page codes to corresponding page titles
+const pages = {
+    '': '', // empty option needed in some cases
+    '/': 'Sākumlapa'
+}
 
-    if (items.length === 0) return null
+export type PageKey = keyof typeof pages
+
+export type BreadcrumbsItem = {
+    title: string
+    path: PageKey
+}
+
+type Props = {
+    pageKeys: PageKey[]
+}
+
+const Breadcrumbs: React.FC<Props> = ({ pageKeys }) => {
+    if (pageKeys.length === 0) return null
+
+    const items = pageKeys.map<BreadcrumbsItem>(key => ({
+        path: key,
+        title: pages[key]
+    }))
 
     return (
-        <nav className="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-                {items.map((item, i) => (
-                    <li key={i} className={i === items.length - 1 ? 'is-active' : undefined}>
-                        <a href={item.path} aria-current={i === items.length - 1 ? 'page' : undefined}>
-                            {item.title}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </nav>
+        <div className="container">
+            <nav className="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    {items.map((item, i) => (
+                        <li key={i} className={i === items.length - 1 ? 'is-active' : undefined}>
+                            <GatsbyLink
+                                to={item.path}
+                                key={item.path}
+                            >
+                                <span
+                                    aria-current={i === items.length - 1 ? 'page' : undefined}>
+                                    {item.title}
+                                </span>
+                            </GatsbyLink>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </div>
     )
 }
 

@@ -8,21 +8,18 @@ import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
 import Hero from '../components/homepage/hero'
 import InfocardList from '../components/homepage/infocard'
-import { useBreadcrumbs } from '../utils/useBreadcrumbs'
 
 type Props = {
   data: HomePageByIdQuery
 }
 
 const HomePage: React.FC<Props> = ({ data }) => {
-  useBreadcrumbs('/')
-
   const { wordpressPage: page } = data
   const heroBlock = getWpBlockByName('lazyblock/hero', page?.blocks ?? null)
   const infocardBlocks = getWpBlocksByName('lazyblock/infocard', page?.blocks ?? null)
 
   return (
-    <Layout>
+    <Layout breadcrumbs={['/', '']}>
       <div className="columns">
         <div className="column">
           <News />

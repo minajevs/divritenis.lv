@@ -4,21 +4,22 @@ import Helmet from 'react-helmet'
 import Navbar from './navbar'
 import Footer from './Footer'
 import '../all.scss'
-import Breadcrumbs from './breadcrumbs'
-import { BreadcrumbsProvider } from '../../utils/useBreadcrumbs'
+import Breadcrumbs, { PageKey } from './breadcrumbs'
 
-const Layout: React.FC = ({ children }) => {
+type Props = {
+  breadcrumbs?: PageKey[]
+}
+
+const Layout: React.FC<Props> = ({ breadcrumbs, children }) => {
   return (
     <>
-      <BreadcrumbsProvider>
-        <Helmet title="Divritenis.lv" />
-        <Navbar />
-        <Breadcrumbs />
-        <div className="container">
-          {children}
-        </div>
-        <Footer />
-      </BreadcrumbsProvider>
+      <Helmet title="Divritenis.lv" />
+      <Navbar />
+      <Breadcrumbs pageKeys={breadcrumbs ?? []} />
+      <div className="container">
+        {children}
+      </div>
+      <Footer />
     </>
   )
 }
