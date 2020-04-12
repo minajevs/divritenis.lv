@@ -8,6 +8,7 @@ import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
 import Hero from '../components/homepage/hero'
 import InfocardList from '../components/homepage/infocard'
+import Calendar from '../components/homepage/calendar'
 
 type Props = {
   data: HomePageByIdQuery
@@ -26,12 +27,7 @@ const HomePage: React.FC<Props> = ({ data }) => {
           <News />
         </div>
         <div className="column is-one-quarter">
-          <div className="box">
-            Kalendārs
-          </div>
-          <div className="box">
-            Aptauja
-          </div>
+          <Calendar />
         </div>
       </div>
       <Hero
@@ -51,24 +47,24 @@ const HomePage: React.FC<Props> = ({ data }) => {
 export default HomePage
 
 export const pageQuery = graphql`
-query HomePageById($id: String) {
-  wordpressPage(id: {eq: $id}) {
-    title
-    content
-    blocks {
-      blockName
-      attrs {
-        left_button_link
-        left_button_text
-        right_button_link
-        right_button_text
-        text
-        background_image
-        title
-        image
-        url
+  query HomePageById($id: String) {
+    wordpressPage(id: {eq: $id}) {
+      title
+      content
+      blocks {
+        blockName
+        attrs {
+          left_button_link
+          left_button_text
+          right_button_link
+          right_button_text
+          text
+          background_image
+          title
+          image
+          url
+        }
       }
     }
   }
-}
 `
