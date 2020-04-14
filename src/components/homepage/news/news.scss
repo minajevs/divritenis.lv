@@ -1,6 +1,18 @@
 .news-body {
-    .card .read-more-link {
-        padding: 1em 0 0 0;
+    .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .card-content {
+            height: 100%;
+        }
+
+        .card-footer {
+            padding: 1em 0 0 0;
+            border: none;
+            flex: auto;
+        }
     }
 
     img {

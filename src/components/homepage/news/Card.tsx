@@ -26,10 +26,10 @@ export const Card: React.FC<Props> = ({ title, excerpt, image, path }) => {
                     <div className="excerpt">
                         {excerpt}
                     </div>
-                    <div className="read-more-link">
-                        <a className="has-text-weight-semibold" href={path}>Lasīt vairāk</a>
-                    </div>
                 </div>
+            </div>
+            <div className="card-footer">
+                <a className="has-text-weight-semibold" href={path}>Lasīt vairāk</a>
             </div>
         </div>
     )
