@@ -8,7 +8,7 @@ import { HomePageByIdQuery } from '../../graphql-types'
 import News from '../components/homepage/news'
 import Hero from '../components/homepage/hero'
 import InfocardList from '../components/homepage/infocard'
-import Calendar from '../components/homepage/calendar'
+import LoadableCalendar from '../components/homepage/calendar/LoadableCalendar'
 
 type Props = {
   data: HomePageByIdQuery
@@ -26,7 +26,7 @@ const HomePage: React.FC<Props> = ({ data }) => {
           <News />
         </div>
         <div className="column is-one-quarter">
-          <Calendar />
+          <LoadableCalendar />
         </div>
       </div>
       <Hero
