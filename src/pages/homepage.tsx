@@ -9,6 +9,7 @@ import News from '../components/homepage/news'
 import Hero from '../components/homepage/hero'
 import InfocardList from '../components/homepage/infocard'
 import LoadableCalendar from '../components/homepage/calendar/LoadableCalendar'
+import Poll from '../components/homepage/poll'
 
 type Props = {
   data: HomePageByIdQuery
@@ -26,7 +27,14 @@ const HomePage: React.FC<Props> = ({ data }) => {
           <News />
         </div>
         <div className="column is-one-quarter">
-          <LoadableCalendar />
+          <div className="columns is-multiline">
+            <div className="column is-full">
+              <LoadableCalendar />
+            </div>
+            <div className="column is-full">
+              <Poll />
+            </div>
+          </div>
         </div>
       </div>
       <Hero
