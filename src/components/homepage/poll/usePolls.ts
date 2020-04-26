@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react"
+import { tryParse, random } from "../../../utils/helpers"
 
 type WpPollTag = {
     basetype: 'checkbox' | string
@@ -29,8 +30,10 @@ type Poll = {
     results: PollResults | null
 }
 
+// local storage key 
 const answeredPollsKey = 'answeredPolls'
 
+// check if user already answered poll 
 const userAnsweredPoll = (pollId: number) => {
     const item = window.localStorage.getItem(answeredPollsKey)
 
@@ -39,6 +42,7 @@ const userAnsweredPoll = (pollId: number) => {
     return answeredPolls.includes(pollId)
 }
 
+// save answered poll to local storage 
 const setUserAnsweredPoll = (pollId: number) => {
     const item = window.localStorage.getItem(answeredPollsKey)
     const answeredPolls = JSON.parse(item || '[]') as number[]
@@ -47,16 +51,6 @@ const setUserAnsweredPoll = (pollId: number) => {
 
     window.localStorage.setItem(answeredPollsKey, JSON.stringify(answeredPolls))
 }
-
-const tryParse = <T>(value: string) => {
-    try {
-        return JSON.parse(value) as T
-    } catch {
-        return null
-    }
-}
-
-const random = (min: number, max: number) => (Math.random() * (max - min + 1)) << 0
 
 const getPollAnswers = (pollId: number) =>
     fetch(`${process.env.GATSBY_WP_URL}/wp-json/polls/v1/poll/${pollId}`)
@@ -91,22 +85,27 @@ const getPollOptions = (poll: WpPoll) => {
     return radioTag.labels
 }
 
+// Load poll data and choose random one to display
 const getData = async (setPoll: React.Dispatch<React.SetStateAction<Poll | null>>) => {
     try {
+        // HTTP GET WP api to get all polls
         const response = await fetch(`${process.env.GATSBY_WP_URL}/wp-json/contact-form-7/v1/contact-forms`)
         const data: WpPoll[] = await response.json()
 
+        // No polls => do nothing
         if (data.length === 0) return
 
-        const randomPollIndex = random(0, data.length - 1)
-        const randomPoll = data[randomPollIndex]
+        // Get random poll
+        const randomPoll = data[random(0, data.length - 1)]
 
+        // Check if user already answered this poll
         const answered = userAnsweredPoll(randomPoll.id)
 
+        // If user answered - load poll results
         const results = answered ? await getPollAnswers(randomPoll.id) : null
 
+        // Parse poll answer options
         const options = getPollOptions(randomPoll)
-
         if (options === null) return
 
         setPoll({
@@ -125,10 +124,13 @@ type VoteResult = {
     status: string
 }
 
+// Send user vote to API
 const sendVote = async (pollId: number, vote: string) => {
+    // prepare multipart request, because that's what API expects
     const formData = new FormData()
     formData.append('atbilde', vote)
 
+    // HTTP POST vote request
     const response = await fetch(`${process.env.GATSBY_WP_URL}/wp-json/contact-form-7/v1/contact-forms/${pollId}/feedback`, {
         method: 'POST',
         body: formData
@@ -136,11 +138,13 @@ const sendVote = async (pollId: number, vote: string) => {
 
     const data: VoteResult = await response.json()
 
+    // success response has { status: 'mail_sent' }
     if (data.status === 'mail_sent') return true
 
     return false
 }
 
+// Poll hook
 export const usePoll = () => {
     const [poll, setPoll] = useState<Poll | null>(null)
 
@@ -148,13 +152,16 @@ export const usePoll = () => {
         if (poll === null) return
         if (userAnsweredPoll(poll.id)) return
 
+        // send vote to API
         sendVote(poll.id, vote)
+            // if everythings good - save that user answered poll
             .then(success => {
                 if (success)
                     setUserAnsweredPoll(poll.id)
 
                 return getPollAnswers(poll.id)
             })
+            // show results to user
             .then(results => setPoll(prev => ({
                 ...prev!,
                 answered: true,
