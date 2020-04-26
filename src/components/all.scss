@@ -52,4 +52,10 @@ $card-content-padding: 0;
   width: 100% !important;
 }
 
+// Disable google recaptcha badge
+.grecaptcha-badge { 
+  visibility: hidden; 
+}
+
 @import "~bulma";
+@import '~bulma-checkradio/src/sass/index';

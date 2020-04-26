@@ -20,7 +20,7 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site.
-        baseUrl: process.env.WP_URL,
+        baseUrl: process.env.GATSBY_WP_URL,
         hostingWPCOM: false,
         protocol: 'https',
         useACF: true,
