@@ -19,8 +19,14 @@ const query = graphql`
           acf {
             excerpt
             preview_image {
-                source_url
-                alt_text
+              alt_text
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 400, maxHeight: 200) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
             }
           }
         }
@@ -44,7 +50,7 @@ export const News: React.FC<Props> = ({ }) => {
               <Card
                 title={node.title ?? ""}
                 excerpt={node.acf?.excerpt ?? ""}
-                image={{ url: node.acf?.preview_image?.source_url ?? "", alt: node.acf?.preview_image?.alt_text ?? "" }}
+                image={{ img: node.acf?.preview_image?.localFile?.childImageSharp?.fluid!, alt: node.acf?.preview_image?.alt_text ?? "" }}
                 path={node.path ?? ""}
               />
             </div>

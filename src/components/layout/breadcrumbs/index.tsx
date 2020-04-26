@@ -34,15 +34,18 @@ const Breadcrumbs: React.FC<Props> = ({ pageKeys }) => {
                 <ul>
                     {items.map((item, i) => (
                         <li key={i} className={i === items.length - 1 ? 'is-active' : undefined}>
-                            <GatsbyLink
-                                to={item.path}
-                                key={item.path}
-                            >
-                                <span
-                                    aria-current={i === items.length - 1 ? 'page' : undefined}>
-                                    {item.title}
-                                </span>
-                            </GatsbyLink>
+                            {item.path !== ''
+                                ? <GatsbyLink
+                                    to={item.path}
+                                    key={item.path}
+                                >
+                                    <span
+                                        aria-current={i === items.length - 1 ? 'page' : undefined}>
+                                        {item.title}
+                                    </span>
+                                </GatsbyLink>
+                                : null
+                            }
                         </li>
                     ))}
                 </ul>

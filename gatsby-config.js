@@ -38,10 +38,11 @@ module.exports = {
         }
       }
     },
+    'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    { resolve: 'gatsby-source-filesystem', options: { path: './static/img' } },
     'gatsby-plugin-typescript',
     'gatsby-plugin-typescript-checker',
-    'gatsby-transformer-sharp',
     {
       // Removes unused css rules
       resolve: 'gatsby-plugin-purgecss',

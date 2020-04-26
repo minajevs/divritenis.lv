@@ -20,7 +20,7 @@ export const InfocardList: React.FC<Props> = ({ blocks }) => {
                         title={attrs?.title ?? ""}
                         text={attrs?.text ?? ""}
                         img={JSON.parse(decodeURI(attrs?.image ?? ''))['url']}
-                        infoUrl={attrs?.url ?? ""}
+                        infoUrl={attrs?.url ?? "/"}
                     />
                 </div>)
             })}

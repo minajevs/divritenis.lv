@@ -47,7 +47,7 @@ const Links: React.FC<Props> = ({ linkClassName = "" }) => {
     <>
       {items?.map((item, index) => (
         <div className="column" key={index}>
-          <Link title={item?.title ?? ""} url={item?.url ?? ""} className={linkClassName} />
+          <Link title={item?.title ?? ""} url={item?.url ?? "/"} className={linkClassName} />
         </div>
       ))}
     </>
