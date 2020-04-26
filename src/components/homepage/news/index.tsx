@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useStaticQuery, graphql } from 'gatsby'
+import { parseISO } from 'date-fns'
 
 import Card from './Card'
 
@@ -16,6 +17,7 @@ const query = graphql`
           title
           excerpt
           path
+          date
           acf {
             excerpt
             preview_image {
@@ -46,6 +48,7 @@ export const News: React.FC<Props> = ({ }) => {
                 excerpt={node.acf?.excerpt ?? ""}
                 image={{ url: node.acf?.preview_image?.source_url ?? "", alt: node.acf?.preview_image?.alt_text ?? "" }}
                 path={node.path ?? ""}
+                date={parseISO(node.date) ?? new Date()}
               />
             </div>
           ))}
