@@ -1,4 +1,5 @@
 import React from 'react'
+import { format } from 'date-fns'
 
 export type Props = {
     title: string
@@ -8,9 +9,10 @@ export type Props = {
         alt: string
     }
     path: string
+    date: Date
 }
 
-export const Card: React.FC<Props> = ({ title, excerpt, image, path }) => {
+export const Card: React.FC<Props> = ({ title, excerpt, image, path, date }) => {
     return (
         <div className="card">
             <div className="card-image">
@@ -19,6 +21,9 @@ export const Card: React.FC<Props> = ({ title, excerpt, image, path }) => {
                 </figure>
             </div>
             <div className="card-content">
+                <p className="card-header-subtitle is-size-7 has-text-weight-bold has-text-grey">
+                    {format(date, 'dd.MM.yyyy')}
+                </p>
                 <p className="card-header-title">
                     {title}
                 </p>

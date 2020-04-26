@@ -4,6 +4,14 @@
         flex-direction: column;
         height: 100%;
 
+        .card-header-title {
+            padding: 0;
+        }
+
+        .card-header-subtitle {
+            padding: 0.25em 0;
+        }
+
         .card-content {
             height: 100%;
         }
