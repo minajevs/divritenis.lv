@@ -3,7 +3,7 @@ import { tryParse, random } from "../../../utils/helpers"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
 type WpPollTag = {
-    basetype: 'checkbox' | string
+    basetype: 'radio' | string
     labels: string[]
     name: string
 }
