@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react"
 import { tryParse, random } from "../../../utils/helpers"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
 type WpPollTag = {
     basetype: 'checkbox' | string
@@ -125,10 +126,13 @@ type VoteResult = {
 }
 
 // Send user vote to API
-const sendVote = async (pollId: number, vote: string) => {
+const sendVote = async (pollId: number, vote: string, captchaToken: string) => {
     // prepare multipart request, because that's what API expects
     const formData = new FormData()
     formData.append('atbilde', vote)
+    formData.append('g-recaptcha-response', '123')
+
+    console.log(captchaToken)
 
     // HTTP POST vote request
     const response = await fetch(`${process.env.GATSBY_WP_URL}/wp-json/contact-form-7/v1/contact-forms/${pollId}/feedback`, {
@@ -137,6 +141,8 @@ const sendVote = async (pollId: number, vote: string) => {
     })
 
     const data: VoteResult = await response.json()
+
+    console.log(data)
 
     // success response has { status: 'mail_sent' }
     if (data.status === 'mail_sent') return true
@@ -147,27 +153,31 @@ const sendVote = async (pollId: number, vote: string) => {
 // Poll hook
 export const usePoll = () => {
     const [poll, setPoll] = useState<Poll | null>(null)
+    const { executeRecaptcha } = useGoogleReCaptcha()
 
-    const vote = useCallback((vote: string) => {
+    const vote = useCallback(async (vote: string) => {
         if (poll === null) return
         if (userAnsweredPoll(poll.id)) return
+        if (executeRecaptcha === undefined) return
+
+        // verify recaptcha
+        const token = await executeRecaptcha('contactform')
 
         // send vote to API
-        sendVote(poll.id, vote)
-            // if everythings good - save that user answered poll
-            .then(success => {
-                if (success)
-                    setUserAnsweredPoll(poll.id)
+        const voteSuccess = await sendVote(poll.id, vote, token)
 
-                return getPollAnswers(poll.id)
-            })
-            // show results to user
-            .then(results => setPoll(prev => ({
-                ...prev!,
-                answered: true,
-                results
-            })))
-    }, [poll, setPoll])
+        // if everythings good - save that user answered poll
+        if (voteSuccess) setUserAnsweredPoll(poll.id)
+
+        const results = await getPollAnswers(poll.id)
+
+        // show results to user
+        setPoll(prev => ({
+            ...prev!,
+            answered: true,
+            results
+        }))
+    }, [poll, setPoll, executeRecaptcha])
 
     useEffect(() => {
         getData(setPoll)
