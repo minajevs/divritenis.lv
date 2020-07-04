@@ -21,7 +21,7 @@ export const Results: React.FC<Props> = ({ options, votes, total }) => {
             <div className="poll-results">
                 {options.map((x, i) => (
                     <div className="poll-result" key={i}>
-                        <label className="has-text-white" key={i} htmlFor={`result-${i}`}>
+                        <label key={i} htmlFor={`result-${i}`}>
                             {x} ({getVotes(votes, i)})
                         </label>
                         <progress className="progress is-primary"
@@ -34,7 +34,7 @@ export const Results: React.FC<Props> = ({ options, votes, total }) => {
                     </div>
                 ))}
             </div>
-            <div className="poll-total-result has-text-white has-text-centered is-full-width">
+            <div className="poll-total-result has-text-centered is-full-width">
                 Kopā: {total} {getPluralAtbildes(total)}
             </div>
         </>

@@ -21,7 +21,7 @@ export const Card: React.FC<Props> = ({ title, excerpt, image, path, date }) => 
                 </figure>
             </div>
             <div className="card-content">
-                <p className="card-header-subtitle is-size-7 has-text-weight-bold has-text-grey">
+                <p className="card-header-subtitle is-size-7    has-text-grey">
                     {format(date, 'dd.MM.yyyy')}
                 </p>
                 <p className="card-header-title">
