@@ -5,7 +5,9 @@ import Layout from '../components/layout'
 import { BreadcrumbsFactory } from '../components/layout/breadcrumbs'
 
 import { BlogPostByIdQuery, Wordpress__Category, Maybe } from '../../graphql-types'
-import PostInfo from '../components/PostInfo'
+import PostInfo from '../components/homepage/post/PostInfo'
+import { parseJSON } from 'date-fns'
+import RecommendedPosts from '../components/homepage/post/recommended-posts/RecommendedPosts'
 
 type TemplateProps = {
   data: BlogPostByIdQuery
@@ -29,39 +31,8 @@ export const BlogPostTemplate: React.FC<TemplateProps> = ({ data }) => {
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </div>
         <div className="column">
-          <PostInfo />
-          <div style={{ marginTop: `4rem` }}>
-            <p>
-              {date} - posted by{' '}
-              <Link to={`/author/${author?.slug}`}>{author?.name}</Link>
-            </p>
-            {categories && categories.length ? (
-              <div>
-                <h4>Categories</h4>
-                <ul className="taglist">
-                  {categories.map(category => (
-                    <li key={`${category?.slug}cat`}>
-                      <Link to={`/categories/${category?.slug}/`}>
-                        {category?.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-            {tags && tags.length ? (
-              <div>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={`${tag?.slug}tag`}>
-                      <Link to={`/tags/${tag?.slug}/`}>{tag?.name}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
+          <PostInfo date={parseJSON(date)} tags={tags} />
+          <RecommendedPosts />
         </div>
       </div>
     </div>
@@ -90,7 +61,7 @@ export const pageQuery = graphql`
     id
     slug
     content
-    date(formatString: "MMMM DD, YYYY")
+    date
     title
   }
   query BlogPostByID($id: String!) {
@@ -99,7 +70,7 @@ export const pageQuery = graphql`
       title
       slug
       content
-      date(formatString: "MMMM DD, YYYY")
+      date
       categories {
         name
         slug
