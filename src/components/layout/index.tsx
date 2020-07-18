@@ -4,12 +4,12 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 
 import Navbar from './navbar'
 import Footer from './Footer'
-import Breadcrumbs, { PageKey } from './breadcrumbs'
+import Breadcrumbs, { PageKeys } from './breadcrumbs'
 
 import '../all.scss'
 
 type Props = {
-  breadcrumbs?: PageKey[]
+  breadcrumbs?: PageKeys
 }
 
 const Layout: React.FC<Props> = ({ breadcrumbs, children }) => {

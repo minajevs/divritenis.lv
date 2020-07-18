@@ -1,0 +1,37 @@
+.recommended-posts {
+    .header {
+        margin: 0;
+        padding-bottom: 0;
+        h4 {
+            margin: 0;
+        }
+    }
+    .posts {
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: unset;
+            margin-bottom: 0.5em;
+        
+            .card-header-title {
+                padding: 0;
+            }
+        
+            .card-header-subtitle {
+                padding: 0.25em 0;
+                margin-bottom: 0 !important;
+            }
+            
+            .card-footer {
+                padding: 0.25em 0 0 0;
+                border: none;
+                flex: auto;
+            }
+        }
+        
+        img {
+            object-fit: cover;
+        }    
+    }
+}

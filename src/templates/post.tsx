@@ -1,10 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
+import { BreadcrumbsFactory } from '../components/layout/breadcrumbs'
 
 import { BlogPostByIdQuery, Wordpress__Category, Maybe } from '../../graphql-types'
+import PostInfo from '../components/homepage/post/PostInfo'
+import { parseJSON } from 'date-fns'
+import RecommendedPosts from '../components/homepage/post/recommended-posts/RecommendedPosts'
 
 type TemplateProps = {
   data: BlogPostByIdQuery
@@ -19,50 +22,20 @@ export const BlogPostTemplate: React.FC<TemplateProps> = ({ data }) => {
 
   const { title, content, date, author, categories, tags } = post
   return (
-    <section className="section">
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            <div style={{ marginTop: `4rem` }}>
-              <p>
-                {date} - posted by{' '}
-                <Link to={`/author/${author?.slug}`}>{author?.name}</Link>
-              </p>
-              {categories && categories.length ? (
-                <div>
-                  <h4>Categories</h4>
-                  <ul className="taglist">
-                    {categories.map(category => (
-                      <li key={`${category?.slug}cat`}>
-                        <Link to={`/categories/${category?.slug}/`}>
-                          {category?.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-              {tags && tags.length ? (
-                <div>
-                  <h4>Tags</h4>
-                  <ul className="taglist">
-                    {tags.map(tag => (
-                      <li key={`${tag?.slug}tag`}>
-                        <Link to={`/tags/${tag?.slug}/`}>{tag?.name}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-            </div>
-          </div>
+    <div className="container content">
+      <div className="columns">
+        <div className="column is-three-quarters">
+          <h1 className="is-size-2 has-text-weight-bold is-bold-light">
+            {title}
+          </h1>
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+        </div>
+        <div className="column">
+          <PostInfo date={parseJSON(date)} tags={tags} />
+          <RecommendedPosts />
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
@@ -74,7 +47,7 @@ const BlogPost: React.FC<Props> = ({ data }) => {
   const { wordpressPost: post } = data
 
   return (
-    <Layout>
+    <Layout breadcrumbs={['page', BreadcrumbsFactory.currentPage(post?.title || '')]}>
       <Helmet title={`${post?.title} | Blog`} />
       <BlogPostTemplate data={data} />
     </Layout>
@@ -88,7 +61,7 @@ export const pageQuery = graphql`
     id
     slug
     content
-    date(formatString: "MMMM DD, YYYY")
+    date
     title
   }
   query BlogPostByID($id: String!) {
@@ -97,7 +70,7 @@ export const pageQuery = graphql`
       title
       slug
       content
-      date(formatString: "MMMM DD, YYYY")
+      date
       categories {
         name
         slug

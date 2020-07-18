@@ -57,7 +57,6 @@ const getPollAnswers = (pollId: number) =>
     fetch(`${process.env.GATSBY_WP_URL}/wp-json/polls/v1/poll/${pollId}`)
         .then(response => response.json())
         .then((data: WpPollResults[]) => {
-            console.log(data)
             const result: PollResults = data.reduce((prev, cur) => {
                 // some splitting magic
                 const index = tryParse<number>(cur.form_value.split(';')[4].split(':')[2])
@@ -130,9 +129,7 @@ const sendVote = async (pollId: number, vote: string, captchaToken: string) => {
     // prepare multipart request, because that's what API expects
     const formData = new FormData()
     formData.append('atbilde', vote)
-    formData.append('g-recaptcha-response', '123')
-
-    console.log(captchaToken)
+    formData.append('g-recaptcha-response', captchaToken)
 
     // HTTP POST vote request
     const response = await fetch(`${process.env.GATSBY_WP_URL}/wp-json/contact-form-7/v1/contact-forms/${pollId}/feedback`, {
@@ -141,8 +138,6 @@ const sendVote = async (pollId: number, vote: string, captchaToken: string) => {
     })
 
     const data: VoteResult = await response.json()
-
-    console.log(data)
 
     // success response has { status: 'mail_sent' }
     if (data.status === 'mail_sent') return true

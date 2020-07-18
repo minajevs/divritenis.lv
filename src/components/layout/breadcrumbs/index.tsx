@@ -6,27 +6,46 @@ import './breadcrumbs.scss'
 // Maps all page codes to corresponding page titles
 const pages = {
     '': '', // empty option needed in some cases
-    '/': 'Sākumlapa'
+    '/': 'Sākumlapa',
+    'page': 'Ziņas', // TODO: dedicated pages for news/blogs/posts list
 }
 
-export type PageKey = keyof typeof pages
+type PageKey = keyof typeof pages
+
+export class BreadcrumbsFactory {
+    static empty = (): BreadcrumbsItem => ({
+        title: '',
+        path: ''
+    })
+
+    static currentPage = (title: string, path: string = ''): BreadcrumbsItem => ({
+        title,
+        path
+    })
+}
+
+export type PageKeys = Array<PageKey | BreadcrumbsItem>
 
 export type BreadcrumbsItem = {
     title: string
-    path: PageKey
+    path: PageKey | string
 }
 
 type Props = {
-    pageKeys: PageKey[]
+    pageKeys: PageKeys
 }
 
 const Breadcrumbs: React.FC<Props> = ({ pageKeys }) => {
     if (pageKeys.length === 0) return null
 
-    const items = pageKeys.map<BreadcrumbsItem>(key => ({
-        path: key,
-        title: pages[key]
-    }))
+    const items = pageKeys.map<BreadcrumbsItem>(key => {
+        if (typeof key === 'string')
+            return {
+                path: key,
+                title: pages[key]
+            }
+        return key
+    })
 
     return (
         <div className="container">
