@@ -15,7 +15,6 @@ $lra-blue-dark: #233e54;
 
 // General settings
 $primary: $lra-red;
-$primary-invert: $lra-blue;
 
 $info: $lra-blue-dark;
 
@@ -28,9 +27,12 @@ $dark: $lra-gray-dark;
 $body-background-color: $white-bis;
 
 $button-color: #FFFFFF;
+$button-border-color: none;
 $button-background-color: $lra-red;
 $button-hover-color: $lra-gray;
 
 $box-radius: 0;
 $box-shadow: 0;
+$control-radius: 0;
+
 $gap: 64px;

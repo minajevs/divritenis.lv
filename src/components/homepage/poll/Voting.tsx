@@ -18,14 +18,14 @@ export const Voting: React.FC<Props> = ({ options, vote }) => {
                         <input className="is-checkradio is-primary" type="radio" name="atbildes"
                             id={`option-${i}`}
                             value={i} defaultChecked={i === 0} />
-                        <label className="radio has-text-white" key={i} htmlFor={`option-${i}`}>
+                        <label className="radio" key={i} htmlFor={`option-${i}`}>
                             {x}
                         </label>
                     </div>
                 ))}
             </div>
-            <div className="poll-actions buttons is-right">
-                <button className="button is-primary has-text-white is-right"
+            <div className="poll-actions buttons is-centered">
+                <button className="button is-primary"
                     onClick={() => vote(selectedAnswer.toString())}>Balsot</button>
             </div>
         </>

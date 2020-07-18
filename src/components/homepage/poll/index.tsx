@@ -9,7 +9,7 @@ import './poll.scss'
 const PollCard: React.FC<{ title: string }> = ({ title, children }) => (
     <div className="card poll">
         <div className="card-content">
-            <p className="poll-title has-text-centered has-text-weight-semibold has-text-white">{title}</p>
+            <p className="poll-title has-text-centered has-text-weight-semibold">{title}</p>
             {children}
         </div>
     </div>

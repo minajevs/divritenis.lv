@@ -1,7 +1,7 @@
 @import '../../variables';
 
 .poll {
-    background-color: $lra-blue;
+    background-color: $white;
 
     .poll-title {
         padding: 0.25em 0.75em 0em;
@@ -27,11 +27,21 @@
 
         progress {
             border-radius: 0;
+            /*
+            &::-webkit-progress-value {
+                background-color: $lra-blue; 
+            }
+            &::-moz-progress-bar {
+                background-color: $lra-blue; 
+            }
+            &::-ms-fill {
+                background-color: $lra-blue; 
+            }*/
         }
     }
 
     .poll-total-result {
         margin: 0.75em 0em;
-        background-color: $lra-blue-dark;
+        background-color: whitesmoke;
     }
 }
