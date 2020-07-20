@@ -9,7 +9,7 @@ export const Footer: React.FC<Props> = ({ }) => {
         <>
             <footer className="footer">
                 <div className="container">
-                    <div className="columns is-vcentered is-full-width has-text-centered">
+                    <div className="columns is-vcentered is-full-width has-text-centered is-hidden-mobile">
                         <Links linkClassName="footer-item" />
                     </div>
                     <div className="content has-text-centered is-uppercase">
