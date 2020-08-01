@@ -10,9 +10,10 @@ export type Props = {
     }
     path: string
     date: Date
+    excerptClassName: string
 }
 
-export const Card: React.FC<Props> = ({ title, excerpt, image, path, date }) => {
+export const Card: React.FC<Props> = ({ title, excerpt, image, path, date, excerptClassName = '' }) => {
     return (
         <div className="card">
             <div className="card-image">
@@ -27,7 +28,7 @@ export const Card: React.FC<Props> = ({ title, excerpt, image, path, date }) => 
                 <p className="card-header-title">
                     {title}
                 </p>
-                <div className="content">
+                <div className={`content ${excerptClassName}`}>
                     <div className="excerpt">
                         {excerpt}
                     </div>

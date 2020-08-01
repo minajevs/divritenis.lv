@@ -21,7 +21,6 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </nav>
-
       <nav role="navigation" aria-label="main navigation" className="navbar is-transparent row">
         <div className="container">
           <div className="navbar-brand">

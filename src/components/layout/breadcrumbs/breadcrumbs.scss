@@ -1,3 +1,9 @@
 .breadcrumb {
     margin: 0.75em 0;
+    li, a, span {
+        overflow: hidden;
+    }
+    span {
+        text-overflow: ellipsis;
+    }
 }
