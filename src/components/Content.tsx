@@ -1,8 +1,8 @@
 import React from 'react'
 
 type Props = {
-  content: string,
-  className: string,
+  content: string
+  className: string
 }
 
 export const HTMLContent: React.FC<Props> = ({ content, className }) => (

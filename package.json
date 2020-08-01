@@ -73,6 +73,8 @@
   "devDependencies": {
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.3.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
     "ts-node": "^8.6.2"
@@ -87,6 +89,7 @@
     }
   },
   "lint-staged": {
-    "*.tsx": "prettier --write"
+    "*.tsx": "prettier --write",
+    "*.{js,css,md}": "prettier --write"
   }
 }
