@@ -1,5 +1,5 @@
-@import "./variables";
-@import url("https://fonts.googleapis.com/css?family=PT+Sans");
+@import './variables';
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
 
 // Card variables
 $card-background-color: $white-bis;
@@ -53,9 +53,9 @@ $card-content-padding: 0;
 }
 
 // Disable google recaptcha badge
-.grecaptcha-badge { 
-  visibility: hidden; 
+.grecaptcha-badge {
+  visibility: hidden;
 }
 
-@import "~bulma";
+@import '~bulma';
 @import '~bulma-checkradio/src/sass/index';
