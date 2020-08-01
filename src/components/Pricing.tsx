@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 type PriceItem = {
-  plan: string,
-  price: string,
-  description: string,
+  plan: string
+  price: string
+  description: string
   items: string[]
 }
 

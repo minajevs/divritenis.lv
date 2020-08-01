@@ -8,14 +8,14 @@ import Pagination from '../components/Pagination'
 import { IndexQueryQuery } from '../../graphql-types'
 
 type Props = {
-  data: IndexQueryQuery,
+  data: IndexQueryQuery
   pageContext: {
-    currentPage: number,
+    currentPage: number
     numPages: number
   }
 }
 
-const BlogPage: React.FC<Props> = (props) => {
+const BlogPage: React.FC<Props> = props => {
   const { data, pageContext } = props
   const { edges: posts } = data.allWordpressPost
 

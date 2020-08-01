@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby'
 import { PostListFieldsFragment } from '../../graphql-types'
 
 type Props = {
-  title: string,
+  title: string
   posts: { node: PostListFieldsFragment }[]
 }
 
@@ -22,7 +22,7 @@ const PostList: React.FC<Props> = ({ posts, title }) => {
             key={post.id}
           >
             <p>
-              <Link className="has-text-primary" to={post.slug ?? ""}>
+              <Link className="has-text-primary" to={post.slug ?? ''}>
                 {post.title}
               </Link>
               <span> &bull; </span>
@@ -36,12 +36,13 @@ const PostList: React.FC<Props> = ({ posts, title }) => {
             <div>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: post.excerpt?.replace(/<p class="link-more.*/, '') ?? "",
+                  __html:
+                    post.excerpt?.replace(/<p class="link-more.*/, '') ?? ''
                 }}
               />
-              <Link className="button is-small" to={post.slug ?? ""}>
+              <Link className="button is-small" to={post.slug ?? ''}>
                 Keep Reading →
-                </Link>
+              </Link>
             </div>
           </div>
         ))}

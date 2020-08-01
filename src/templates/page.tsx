@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import { PageByIdQuery } from '../../graphql-types'
 
 type TemplateProps = {
-  title: string,
+  title: string
   content: string
 }
 
@@ -36,13 +36,12 @@ type Props = {
   data: PageByIdQuery
 }
 
-
 const Page: React.FC<Props> = ({ data }) => {
   const { wordpressPage: page } = data
 
   return (
     <Layout>
-      <PageTemplate title={page?.title ?? ""} content={page?.content ?? ""} />
+      <PageTemplate title={page?.title ?? ''} content={page?.content ?? ''} />
     </Layout>
   )
 }

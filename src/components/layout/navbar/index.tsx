@@ -8,7 +8,11 @@ import './navbar.scss'
 
 const Navbar: React.FC = () => (
   <>
-    <nav role="header" aria-label="header row" className="navbar is-transparent">
+    <nav
+      role="header"
+      aria-label="header row"
+      className="navbar is-transparent"
+    >
       <div className="container">
         <div className="navbar-brand">
           <Logo />
@@ -19,7 +23,11 @@ const Navbar: React.FC = () => (
       </div>
     </nav>
 
-    <nav role="navigation" aria-label="main navigation" className="navbar is-transparent row">
+    <nav
+      role="navigation"
+      aria-label="main navigation"
+      className="navbar is-transparent row"
+    >
       <div className="container">
         <div className="navbar-menu">
           <div className="columns is-gapless is-vcentered is-full-width has-text-centered">

@@ -11,7 +11,7 @@ import { LatestNewsQuery } from '../../../../graphql-types'
 
 const query = graphql`
   query LatestNews {
-    allWordpressPost(limit: 6, sort: {order: DESC, fields: date}) {
+    allWordpressPost(limit: 6, sort: { order: DESC, fields: date }) {
       edges {
         node {
           title
@@ -21,8 +21,8 @@ const query = graphql`
           acf {
             excerpt
             preview_image {
-                source_url
-                alt_text
+              source_url
+              alt_text
             }
           }
         }
@@ -33,7 +33,7 @@ const query = graphql`
 
 export type Props = {}
 
-export const News: React.FC<Props> = ({ }) => {
+export const News: React.FC<Props> = ({}) => {
   const data = useStaticQuery<LatestNewsQuery>(query)
   const { edges } = data.allWordpressPost
 
@@ -44,17 +44,21 @@ export const News: React.FC<Props> = ({ }) => {
           {edges.map(({ node }, i) => (
             <div className="column is-one-third" key={i}>
               <Card
-                title={node.title ?? ""}
-                excerpt={node.acf?.excerpt ?? ""}
-                image={{ url: node.acf?.preview_image?.source_url ?? "", alt: node.acf?.preview_image?.alt_text ?? "" }}
-                path={node.path ?? ""}
+                title={node.title ?? ''}
+                excerpt={node.acf?.excerpt ?? ''}
+                image={{
+                  url: node.acf?.preview_image?.source_url ?? '',
+                  alt: node.acf?.preview_image?.alt_text ?? ''
+                }}
+                path={node.path ?? ''}
                 date={parseISO(node.date) ?? new Date()}
               />
             </div>
           ))}
         </div>
       </div>
-    </div>)
+    </div>
+  )
 }
 
 export default News

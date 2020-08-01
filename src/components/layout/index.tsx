@@ -22,9 +22,7 @@ const Layout: React.FC<Props> = ({ breadcrumbs, children }) => {
         <Helmet title="Divritenis.lv" />
         <Navbar />
         <Breadcrumbs pageKeys={breadcrumbs ?? []} />
-        <div className="container">
-          {children}
-        </div>
+        <div className="container">{children}</div>
         <Footer />
       </GoogleReCaptchaProvider>
     </>

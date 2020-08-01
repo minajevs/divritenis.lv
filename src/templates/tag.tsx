@@ -7,10 +7,10 @@ import PostList from '../components/PostList'
 import { TagPageQuery } from '../../graphql-types'
 
 type Props = {
-  data: TagPageQuery,
+  data: TagPageQuery
   pageContext: {
-    currentPage: number,
-    numPages: number,
+    currentPage: number
+    numPages: number
     name: string
   }
 }
@@ -22,7 +22,7 @@ const Tag: React.FC<Props> = props => {
   const { name: tag } = pageContext
   const title = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-    } with the tag ${tag}`
+  } with the tag ${tag}`
 
   return (
     <Layout>

@@ -7,10 +7,10 @@ import PostList from '../components/PostList'
 import { CategoryPageQuery } from '../../graphql-types'
 
 type Props = {
-  data: CategoryPageQuery,
+  data: CategoryPageQuery
   pageContext: {
-    currentPage: number,
-    numPages: number,
+    currentPage: number
+    numPages: number
     name: string
   }
 }
@@ -21,7 +21,7 @@ const Category: React.FC<Props> = ({ data, pageContext }) => {
   const { name: category } = pageContext
   const title = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-    } in the “${category}” category`
+  } in the “${category}” category`
 
   return (
     <Layout>

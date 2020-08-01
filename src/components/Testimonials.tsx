@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { v4 } from 'uuid'
 
 type Testimonial = {
-  quote: string,
+  quote: string
   author: string
 }
 

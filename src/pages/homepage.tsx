@@ -18,7 +18,10 @@ type Props = {
 const HomePage: React.FC<Props> = ({ data }) => {
   const { wordpressPage: page } = data
   const heroBlock = getWpBlockByName('lazyblock/hero', page?.blocks ?? null)
-  const infocardBlocks = getWpBlocksByName('lazyblock/infocard', page?.blocks ?? null)
+  const infocardBlocks = getWpBlocksByName(
+    'lazyblock/infocard',
+    page?.blocks ?? null
+  )
 
   return (
     <Layout breadcrumbs={['/', '']}>
@@ -43,7 +46,9 @@ const HomePage: React.FC<Props> = ({ data }) => {
         leftButtonLink={heroBlock?.attrs?.left_button_link ?? ''}
         rightButtonText={heroBlock?.attrs?.right_button_text ?? ''}
         rightButtonLink={heroBlock?.attrs?.right_button_link ?? ''}
-        img={JSON.parse(decodeURI(heroBlock?.attrs?.background_image ?? ''))['url']}
+        img={
+          JSON.parse(decodeURI(heroBlock?.attrs?.background_image ?? ''))['url']
+        }
       />
       <br />
       <InfocardList blocks={infocardBlocks} />
@@ -55,7 +60,7 @@ export default HomePage
 
 export const pageQuery = graphql`
   query HomePageById($id: String) {
-    wordpressPage(id: {eq: $id}) {
+    wordpressPage(id: { eq: $id }) {
       title
       content
       blocks {

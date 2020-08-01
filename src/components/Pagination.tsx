@@ -3,9 +3,9 @@ import { Link } from 'gatsby'
 
 type Props = {
   pageContext: {
-    currentPage: number,
+    currentPage: number
     numPages: number
-  },
+  }
   pathPrefix: string
 }
 

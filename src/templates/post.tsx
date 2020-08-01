@@ -4,7 +4,11 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 import { BreadcrumbsFactory } from '../components/layout/breadcrumbs'
 
-import { BlogPostByIdQuery, Wordpress__Category, Maybe } from '../../graphql-types'
+import {
+  BlogPostByIdQuery,
+  Wordpress__Category,
+  Maybe
+} from '../../graphql-types'
 import PostInfo from '../components/homepage/post/PostInfo'
 import { parseJSON } from 'date-fns'
 import RecommendedPosts from '../components/homepage/post/recommended-posts/RecommendedPosts'
@@ -16,9 +20,7 @@ type TemplateProps = {
 export const BlogPostTemplate: React.FC<TemplateProps> = ({ data }) => {
   const { wordpressPost: post } = data
 
-  if (!post
-    || !post.content
-    || !post.title) return (<>Error loading Post :( </>)
+  if (!post || !post.content || !post.title) return <>Error loading Post :( </>
 
   const { title, content, date, author, categories, tags } = post
   return (
@@ -47,7 +49,9 @@ const BlogPost: React.FC<Props> = ({ data }) => {
   const { wordpressPost: post } = data
 
   return (
-    <Layout breadcrumbs={['page', BreadcrumbsFactory.currentPage(post?.title || '')]}>
+    <Layout
+      breadcrumbs={['page', BreadcrumbsFactory.currentPage(post?.title || '')]}
+    >
       <Helmet title={`${post?.title} | Blog`} />
       <BlogPostTemplate data={data} />
     </Layout>

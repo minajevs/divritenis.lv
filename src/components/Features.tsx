@@ -1,7 +1,7 @@
 import React from 'react'
 
 type GridItem = {
-  image: string,
+  image: string
   text: string
 }
 
