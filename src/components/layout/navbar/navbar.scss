@@ -1,26 +1,26 @@
 // Navbar settings
 .navbar-item img {
-  max-height: none !important;
+	max-height: none !important;
 }
 
 .navbar.row {
-  background-color: whitesmoke;
-  min-height: 0;
+	background-color: whitesmoke;
+	min-height: 0;
 
-  .column {
-    padding: 0.5em;
-  }
+	.column {
+		padding: 0.5em;
+	}
 
-  .container {
-    min-height: 0;
-  }
+	.container {
+		min-height: 0;
+	}
 }
 
 .social-links {
-  margin: auto 1em 0.5em !important;
+	margin: auto 1em 0.5em !important;
 
-  .social-icon {
-    display: flex;
-    align-items: center;
-  }
+	.social-icon {
+		display: flex;
+		align-items: center;
+	}
 }

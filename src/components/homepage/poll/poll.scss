@@ -1,33 +1,33 @@
 @import '../../variables';
 
 .poll {
-  background-color: $white;
+	background-color: $white;
 
-  .poll-title {
-    padding: 0.25em 0.75em 0em;
-  }
+	.poll-title {
+		padding: 0.25em 0.75em 0em;
+	}
 
-  .poll-options {
-    padding: 0.5em 0.75em;
-    .poll-option {
-      margin: 0;
-      padding: 0.25em 0em 0em;
-    }
-  }
+	.poll-options {
+		padding: 0.5em 0.75em;
+		.poll-option {
+			margin: 0;
+			padding: 0.25em 0em 0em;
+		}
+	}
 
-  .poll-actions {
-    padding: 0.25em 0.75em;
-    button {
-      border-radius: 0;
-    }
-  }
+	.poll-actions {
+		padding: 0.25em 0.75em;
+		button {
+			border-radius: 0;
+		}
+	}
 
-  .poll-results {
-    padding: 0.25em 0.75em;
+	.poll-results {
+		padding: 0.25em 0.75em;
 
-    progress {
-      border-radius: 0;
-      /*
+		progress {
+			border-radius: 0;
+			/*
             &::-webkit-progress-value {
                 background-color: $lra-blue; 
             }
@@ -37,11 +37,11 @@
             &::-ms-fill {
                 background-color: $lra-blue; 
             }*/
-    }
-  }
+		}
+	}
 
-  .poll-total-result {
-    margin: 0.75em 0em;
-    background-color: whitesmoke;
-  }
+	.poll-total-result {
+		margin: 0.75em 0em;
+		background-color: whitesmoke;
+	}
 }
