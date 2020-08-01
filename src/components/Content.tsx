@@ -1,16 +1,16 @@
 import React from 'react'
 
 type Props = {
-  content: string
-  className: string
+	content: string
+	className: string
 }
 
 export const HTMLContent: React.FC<Props> = ({ content, className }) => (
-  <div className={className} dangerouslySetInnerHTML={{ __html: content }} />
+	<div className={className} dangerouslySetInnerHTML={{ __html: content }} />
 )
 
 const Content: React.FC<Props> = ({ content, className }) => (
-  <div className={className}>{content}</div>
+	<div className={className}>{content}</div>
 )
 
 HTMLContent.propTypes = Content.propTypes

@@ -6,17 +6,17 @@ import Image from '../../common/Image'
 import logo from '../../../img/logo.svg'
 
 export type LogoBlock = {
-  alt: string
-  title: string
-  caption: string
-  link: string
-  url: string
+	alt: string
+	title: string
+	caption: string
+	link: string
+	url: string
 }
 
 const Logo: React.FC = () => (
-  <Link to="/" className="navbar-item">
-    <Image src={logo} alt="LRA" />
-  </Link>
+	<Link to="/" className="navbar-item">
+		<Image src={logo} alt="LRA" />
+	</Link>
 )
 
 export default Logo

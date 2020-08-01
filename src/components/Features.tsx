@@ -1,27 +1,27 @@
 import React from 'react'
 
 type GridItem = {
-  image: string
-  text: string
+	image: string
+	text: string
 }
 
 type Props = {
-  gridItems: GridItem[]
+	gridItems: GridItem[]
 }
 
 const FeatureGrid: React.FC<Props> = ({ gridItems }) => (
-  <div className="columns is-multiline">
-    {gridItems.map(item => (
-      <div key={item.image} className="column is-6">
-        <section className="section">
-          <p className="has-text-centered">
-            <img alt="" src={item.image} />
-          </p>
-          <p>{item.text}</p>
-        </section>
-      </div>
-    ))}
-  </div>
+	<div className="columns is-multiline">
+		{gridItems.map(item => (
+			<div key={item.image} className="column is-6">
+				<section className="section">
+					<p className="has-text-centered">
+						<img alt="" src={item.image} />
+					</p>
+					<p>{item.text}</p>
+				</section>
+			</div>
+		))}
+	</div>
 )
 
 export default FeatureGrid
