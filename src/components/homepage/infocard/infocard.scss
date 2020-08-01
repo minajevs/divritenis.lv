@@ -1,37 +1,36 @@
-.card.infocard{
-    background-size: cover !important;
-    box-shadow:inset 0 0 0 150vw rgba(0,0,0,0.5);
-    min-height: 250px !important;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #ffffff;
+.card.infocard {
+	background-size: cover !important;
+	box-shadow: inset 0 0 0 150vw rgba(0, 0, 0, 0.5);
+	min-height: 250px !important;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	color: #ffffff;
 
-    .card-content{
-        background: rgba(88, 0, 1, 0.6);
-        margin-top: auto;
-        min-height: 10em;
-        padding: 1em;
-    }
+	.card-content {
+		background: rgba(88, 0, 1, 0.6);
+		margin-top: auto;
+		min-height: 10em;
+		padding: 1em;
+	}
 
-    .button{
-        border: none;
-        background-color: white;
-        color: black;
-        margin-top: 1em;
-    }
-
+	.button {
+		border: none;
+		background-color: white;
+		color: black;
+		margin-top: 1em;
+	}
 }
 
-.title{
-    color: #ffffff;
-    padding: 1em;
+.title {
+	color: #ffffff;
+	padding: 1em;
 }
 
-.infocard-list{
-    .column:nth-child(3n-2){
-        .card-content{
-            background: rgba(97, 133, 158, 0.6);
-        }
-    }
+.infocard-list {
+	.column:nth-child(3n-2) {
+		.card-content {
+			background: rgba(97, 133, 158, 0.6);
+		}
+	}
 }

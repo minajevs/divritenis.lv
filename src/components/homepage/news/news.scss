@@ -1,29 +1,29 @@
 .news-body {
-    .card {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+	.card {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 
-        .card-header-title {
-            padding: 0;
-        }
+		.card-header-title {
+			padding: 0;
+		}
 
-        .card-header-subtitle {
-            margin: 0.5em 0 0em;
-        }
+		.card-header-subtitle {
+			margin: 0.5em 0 0em;
+		}
 
-        .card-content {
-            height: 100%;
-        }
+		.card-content {
+			height: 100%;
+		}
 
-        .card-footer {
-            padding: 1em 0 0 0;
-            border: none;
-            flex: auto;
-        }
-    }
+		.card-footer {
+			padding: 1em 0 0 0;
+			border: none;
+			flex: auto;
+		}
+	}
 
-    img {
-        object-fit: cover;
-    }
+	img {
+		object-fit: cover;
+	}
 }

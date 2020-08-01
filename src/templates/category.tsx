@@ -7,48 +7,48 @@ import PostList from '../components/PostList'
 import { CategoryPageQuery } from '../../graphql-types'
 
 type Props = {
-  data: CategoryPageQuery,
-  pageContext: {
-    currentPage: number,
-    numPages: number,
-    name: string
-  }
+	data: CategoryPageQuery
+	pageContext: {
+		currentPage: number
+		numPages: number
+		name: string
+	}
 }
 
 const Category: React.FC<Props> = ({ data, pageContext }) => {
-  const { edges: posts, totalCount } = data.allWordpressPost
-  const siteTitle = data?.site?.siteMetadata?.title
-  const { name: category } = pageContext
-  const title = `${totalCount} post${
-    totalCount === 1 ? '' : 's'
-    } in the “${category}” category`
+	const { edges: posts, totalCount } = data.allWordpressPost
+	const siteTitle = data?.site?.siteMetadata?.title
+	const { name: category } = pageContext
+	const title = `${totalCount} post${
+		totalCount === 1 ? '' : 's'
+	} in the “${category}” category`
 
-  return (
-    <Layout>
-      <Helmet title={`${category} | ${siteTitle}`} />
-      <PostList posts={posts} title={title} />
-    </Layout>
-  )
+	return (
+		<Layout>
+			<Helmet title={`${category} | ${siteTitle}`} />
+			<PostList posts={posts} title={title} />
+		</Layout>
+	)
 }
 
 export default Category
 
 export const pageQuery = graphql`
-  query CategoryPage($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allWordpressPost(
-      filter: { categories: { elemMatch: { slug: { eq: $slug } } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          ...PostListFields
-        }
-      }
-    }
-  }
+	query CategoryPage($slug: String!) {
+		site {
+			siteMetadata {
+				title
+			}
+		}
+		allWordpressPost(
+			filter: { categories: { elemMatch: { slug: { eq: $slug } } } }
+		) {
+			totalCount
+			edges {
+				node {
+					...PostListFields
+				}
+			}
+		}
+	}
 `
