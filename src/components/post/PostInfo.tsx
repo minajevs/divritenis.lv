@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import { PostInfoSection } from './PostInfoSection'
-import { Nullable } from '../../../utils/helperTypes'
+import { Nullable } from 'src/utils/helperTypes'
 
 import './post-info.scss'
 
