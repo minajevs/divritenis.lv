@@ -13,9 +13,7 @@ type Tag = {
 
 type TagList = Nullable<Nullable<Tag>[]>
 
-const Tags: React.FC<{ tags: TagList }> = ({ tags }) => {
-	if (!tags || !tags.length) return null
-
+const Tags: React.FC<{ tags: Nullable<Tag>[] }> = ({ tags }) => {
 	return (
 		<div className="tags">
 			{tags.map(tag => (
@@ -42,9 +40,11 @@ export const PostInfo: React.FC<Props> = ({ date, tags }) => {
 					day: 'numeric'
 				})}
 			</PostInfoSection>
-			<PostInfoSection title="Birkas">
-				<Tags tags={tags} />
-			</PostInfoSection>
+			{tags && tags.length ? (
+				<PostInfoSection title="Birkas">
+					<Tags tags={tags} />
+				</PostInfoSection>
+			) : null}
 		</>
 	)
 }
