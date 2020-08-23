@@ -16,7 +16,7 @@ type Props = {
 }
 
 const HomePage: React.FC<Props> = ({ data }) => {
-	const { wordpressPage: page } = data
+	const { wpPage: page } = data
 	const heroBlock = getWpBlockByName('lazyblock/hero', page?.blocks ?? null)
 	const infocardBlocks = getWpBlocksByName(
 		'lazyblock/infocard',
@@ -60,21 +60,29 @@ export default HomePage
 
 export const pageQuery = graphql`
 	query HomePageById($id: String) {
-		wordpressPage(id: { eq: $id }) {
+		wpPage(id: { eq: $id }) {
 			title
 			content
 			blocks {
-				blockName
-				attrs {
-					left_button_link
-					left_button_text
-					right_button_link
-					right_button_text
-					text
-					background_image
-					title
-					image
-					url
+				name
+				... on WpLazyblockHeroBlock {
+					attributes {
+						leftButtonLink
+						leftButtonText
+						rightButtonLink
+						rightButtonText
+						text
+					}
+				}
+				... on WpLazyblockInfocardBlock {
+					dynamicContent
+					originalContent
+					attributes {
+						text
+						title
+						url
+						image
+					}
 				}
 			}
 		}

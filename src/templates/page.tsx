@@ -50,7 +50,7 @@ export default Page
 
 export const pageQuery = graphql`
 	query PageById($id: String!) {
-		wordpressPage(id: { eq: $id }) {
+		wpPage(id: { eq: $id }) {
 			title
 			content
 		}

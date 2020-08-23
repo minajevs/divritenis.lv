@@ -21,14 +21,10 @@ const Link: React.FC<LinkType> = ({ url, title, className }) => {
 
 const query = graphql`
 	query MenuData {
-		allWordpressMenusMenusItems(filter: { slug: { eq: "main" } }) {
-			edges {
-				node {
-					items {
-						title
-						url
-					}
-				}
+		allWpMenuItem {
+			nodes {
+				title
+				url
 			}
 		}
 	}

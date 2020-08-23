@@ -23,17 +23,36 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-wordpress',
+      resolve: 'gatsby-source-wordpress-experimental',
       options: {
         // The base url to your WP site.
-        baseUrl: process.env.GATSBY_WP_URL,
-        hostingWPCOM: false,
-        protocol: 'https',
-        useACF: true,
+        url: process.env.GATSBY_WP_URL,
+        verbose: true,
+        develop: {
+          hardCacheMediaFiles: true,
+        },
+        debug: {
+          graphql: {
+            writeQueriesToDisk: true,
+          },
+        },
+        type: {
+          Post: {
+            limit:
+              process.env.NODE_ENV === `development`
+                ? // Lets just pull 50 posts in development to make it easy on ourselves.
+                50
+                : // and we don't actually need more than 5000 in production for this particular site
+                5000,
+          },
+        },
+        //hostingWPCOM: false,
+        //protocol: 'https',
+        //useACF: true,
         auth: {},
-        verboseOutput: false,
+        //verboseOutput: false,
         // prevents weird console errors: https://github.com/gatsbyjs/gatsby/issues/7079
-        excludedRoutes: ["/wp/v2/users/me", "/wp/v2/settings", "/wp/v2/themes", "/lazy-blocks/v1/block-render", "/lazy-blocks/v1/update-block-data"],
+        //excludedRoutes: ["/wp/v2/users/me", "/wp/v2/settings", "/wp/v2/themes", "/lazy-blocks/v1/block-render", "/lazy-blocks/v1/update-block-data"],
       },
     },
     {

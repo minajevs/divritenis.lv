@@ -35,13 +35,8 @@ export default Category
 
 export const pageQuery = graphql`
 	query CategoryPage($slug: String!) {
-		site {
-			siteMetadata {
-				title
-			}
-		}
-		allWordpressPost(
-			filter: { categories: { elemMatch: { slug: { eq: $slug } } } }
+		allWpPost(
+			filter: { categories: { nodes: { elemMatch: { slug: { eq: $slug } } } } }
 		) {
 			totalCount
 			edges {

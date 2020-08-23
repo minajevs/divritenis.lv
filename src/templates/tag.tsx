@@ -17,8 +17,7 @@ type Props = {
 
 const Tag: React.FC<Props> = props => {
 	const { data, pageContext } = props
-	const { edges: posts, totalCount } = data.allWordpressPost
-	const siteTitle = data?.site?.siteMetadata?.title
+	const { edges: posts, totalCount } = data.allWpPost
 	const { name: tag } = pageContext
 	const title = `${totalCount} post${
 		totalCount === 1 ? '' : 's'
@@ -26,7 +25,7 @@ const Tag: React.FC<Props> = props => {
 
 	return (
 		<Layout>
-			<Helmet title={`${tag} | ${siteTitle}`} />
+			<Helmet title={`${tag}`} />
 			<PostList posts={posts} title={title} />
 		</Layout>
 	)
@@ -36,12 +35,9 @@ export default Tag
 
 export const pageQuery = graphql`
 	query TagPage($slug: String!) {
-		site {
-			siteMetadata {
-				title
-			}
-		}
-		allWordpressPost(filter: { tags: { elemMatch: { slug: { eq: $slug } } } }) {
+		allWpPost(
+			filter: { tags: { nodes: { elemMatch: { slug: { eq: $slug } } } } }
+		) {
 			totalCount
 			edges {
 				node {

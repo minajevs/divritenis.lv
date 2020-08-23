@@ -54,15 +54,14 @@ const PostList: React.FC<Props> = ({ posts, title }) => {
 export default PostList
 
 export const pageQuery = graphql`
-	fragment PostListFields on wordpress__POST {
+	fragment PostListFields on WpPost {
 		id
 		title
 		excerpt
 		author {
-			name
-			slug
-			avatar_urls {
-				wordpress_48
+			node {
+				name
+				slug
 			}
 		}
 		date(formatString: "MMMM DD, YYYY")

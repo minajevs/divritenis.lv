@@ -35,15 +35,12 @@ export default Author
 
 export const pageQuery = graphql`
 	query AuthorPage($id: String!) {
-		site {
-			siteMetadata {
-				title
-			}
-		}
-		wordpressWpUsers(id: { eq: $id }) {
+		wpUser(id: { eq: $id }) {
 			name
-			authored_wordpress__POST {
-				...PostListFields
+			posts {
+				nodes {
+					...PostListFields
+				}
 			}
 		}
 	}

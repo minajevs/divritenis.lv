@@ -10,16 +10,16 @@ import './recommended-posts.scss'
 
 const query = graphql`
 	query RecommendedPosts {
-		allWordpressPost(limit: 3, sort: { order: DESC, fields: date }) {
+		allWpPost(limit: 3, sort: { order: DESC, fields: date }) {
 			edges {
 				node {
 					title
-					path
+					slug
 					date
-					acf {
-						preview_image {
-							source_url
-							alt_text
+					post_preview {
+						previewImage {
+							sourceUrl
+							altText
 						}
 					}
 				}
