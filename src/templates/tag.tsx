@@ -26,7 +26,7 @@ const Tag: React.FC<Props> = props => {
 	return (
 		<Layout>
 			<Helmet title={`${tag}`} />
-			<PostList posts={posts} title={title} />
+			<PostList posts={posts.map(x => x.node) ?? []} title={title} />
 		</Layout>
 	)
 }

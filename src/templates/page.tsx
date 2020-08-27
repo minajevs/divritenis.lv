@@ -37,7 +37,7 @@ type Props = {
 }
 
 const Page: React.FC<Props> = ({ data }) => {
-	const { wordpressPage: page } = data
+	const { wpPage: page } = data
 
 	return (
 		<Layout>

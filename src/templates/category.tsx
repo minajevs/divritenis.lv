@@ -16,8 +16,7 @@ type Props = {
 }
 
 const Category: React.FC<Props> = ({ data, pageContext }) => {
-	const { edges: posts, totalCount } = data.allWordpressPost
-	const siteTitle = data?.site?.siteMetadata?.title
+	const { edges: posts, totalCount } = data.allWpPost
 	const { name: category } = pageContext
 	const title = `${totalCount} post${
 		totalCount === 1 ? '' : 's'
@@ -25,8 +24,8 @@ const Category: React.FC<Props> = ({ data, pageContext }) => {
 
 	return (
 		<Layout>
-			<Helmet title={`${category} | ${siteTitle}`} />
-			<PostList posts={posts} title={title} />
+			<Helmet title={`${category}`} />
+			<PostList posts={posts.map(x => x.node)} title={title} />
 		</Layout>
 	)
 }

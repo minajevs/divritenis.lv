@@ -33,7 +33,7 @@ export const BlogPostTemplate: React.FC<TemplateProps> = ({ data }) => {
 					<div dangerouslySetInnerHTML={{ __html: content }} />
 				</div>
 				<div className="column">
-					<PostInfo date={parseJSON(date)} tags={tags} />
+					<PostInfo date={parseJSON(date)} tags={tags?.nodes} />
 					<RecommendedPosts />
 				</div>
 			</div>

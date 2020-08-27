@@ -17,11 +17,11 @@ type Props = {
 
 const BlogPage: React.FC<Props> = props => {
 	const { data, pageContext } = props
-	const { edges: posts } = data.allWordpressPost
+	const { edges: posts } = data.allWpPost
 
 	return (
 		<Layout>
-			<PostList posts={posts} title="Latest posts" />
+			<PostList posts={posts.map(x => x.node)} title="Latest posts" />
 			<Pagination pageContext={pageContext} pathPrefix="/" />
 		</Layout>
 	)
