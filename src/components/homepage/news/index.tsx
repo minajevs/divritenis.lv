@@ -31,6 +31,12 @@ const query = graphql`
 	}
 `
 
+const getMobileNewsCardStyle = (index: number) =>
+	index > 0 ? 'is-half-mobile' : 'is-full-mobile'
+
+const getMobileNewsCardExcerptStyle = (index: number) =>
+	index > 0 ? 'is-hidden-mobile' : ''
+
 export type Props = {}
 
 export const News: React.FC<Props> = ({}) => {
@@ -40,9 +46,14 @@ export const News: React.FC<Props> = ({}) => {
 	return (
 		<div className="news-body">
 			<div className="container">
-				<div className="columns is-multiline">
+				<div className="columns is-multiline is-mobile">
 					{edges.map(({ node }, i) => (
-						<div className="column is-one-third" key={i}>
+						<div
+							className={`column is-one-third-desktop ${getMobileNewsCardStyle(
+								i
+							)}`}
+							key={i}
+						>
 							<Card
 								title={node.title ?? ''}
 								excerpt={node.post_preview?.excerpt ?? ''}
@@ -52,6 +63,7 @@ export const News: React.FC<Props> = ({}) => {
 								}}
 								path={node.slug ?? ''}
 								date={parseISO(node.date) ?? new Date()}
+								excerptClassName={getMobileNewsCardExcerptStyle(i)}
 							/>
 						</div>
 					))}

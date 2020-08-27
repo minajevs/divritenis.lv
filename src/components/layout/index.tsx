@@ -9,23 +9,27 @@ import Breadcrumbs, { PageKeys } from './breadcrumbs'
 import '../all.scss'
 
 type Props = {
-	breadcrumbs?: PageKeys
+  breadcrumbs?: PageKeys
 }
 
 const Layout: React.FC<Props> = ({ breadcrumbs, children }) => {
-	return (
-		<>
-			<GoogleReCaptchaProvider
-				reCaptchaKey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
-				language="lv"
-			>
-				<Helmet title="Divritenis.lv" />
-				<Navbar />
-				<Breadcrumbs pageKeys={breadcrumbs ?? []} />
-				<div className="container">{children}</div>
-				<Footer />
-			</GoogleReCaptchaProvider>
-		</>
-	)
+  return (
+    <>
+      <GoogleReCaptchaProvider
+        reCaptchaKey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
+        language="lv"
+      >
+        <Helmet title="Divritenis.lv" />
+        <Navbar />
+        <div className="section">
+          <Breadcrumbs pageKeys={breadcrumbs ?? []} />
+          <div className="container">
+            {children}
+          </div>
+        </div>
+        <Footer />
+      </GoogleReCaptchaProvider>
+    </>
+  )
 }
 export default Layout

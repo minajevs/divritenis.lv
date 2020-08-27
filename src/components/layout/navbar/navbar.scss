@@ -17,10 +17,19 @@
 }
 
 .social-links {
-	margin: auto 1em 0.5em !important;
+	margin: auto !important;
 
 	.social-icon {
 		display: flex;
 		align-items: center;
+
+		.icon {
+			margin: 0 auto;
+		}
 	}
+}
+
+.navbar-menu {
+	background-color: unset !important;
+	box-shadow: unset !important;
 }
