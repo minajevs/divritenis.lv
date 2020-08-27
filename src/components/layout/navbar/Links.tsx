@@ -36,7 +36,7 @@ export type Props = {
 const Links: React.FC<Props> = ({ linkClassName = '' }) => {
 	const data = useStaticQuery<MenuDataQuery>(query)
 	const { nodes } = data.allWpMenuItem
-	console.log(nodes)
+
 	return (
 		<>
 			{nodes?.map((item, index) => (
