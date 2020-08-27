@@ -17,11 +17,11 @@ type Props = {
 
 const BlogPage: React.FC<Props> = props => {
 	const { data, pageContext } = props
-	const { edges: posts } = data.allWordpressPost
+	const { edges: posts } = data.allWpPost
 
 	return (
 		<Layout>
-			<PostList posts={posts} title="Latest posts" />
+			<PostList posts={posts.map(x => x.node)} title="Latest posts" />
 			<Pagination pageContext={pageContext} pathPrefix="/" />
 		</Layout>
 	)
@@ -31,11 +31,7 @@ export default BlogPage
 
 export const pageQuery = graphql`
 	query IndexQuery($limit: Int!, $skip: Int!) {
-		allWordpressPost(
-			sort: { fields: date, order: DESC }
-			limit: $limit
-			skip: $skip
-		) {
+		allWpPost(sort: { fields: date, order: DESC }, limit: $limit, skip: $skip) {
 			edges {
 				node {
 					...PostListFields

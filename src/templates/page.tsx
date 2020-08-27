@@ -37,7 +37,7 @@ type Props = {
 }
 
 const Page: React.FC<Props> = ({ data }) => {
-	const { wordpressPage: page } = data
+	const { wpPage: page } = data
 
 	return (
 		<Layout>
@@ -50,7 +50,7 @@ export default Page
 
 export const pageQuery = graphql`
 	query PageById($id: String!) {
-		wordpressPage(id: { eq: $id }) {
+		wpPage(id: { eq: $id }) {
 			title
 			content
 		}

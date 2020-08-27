@@ -10,16 +10,16 @@ import './recommended-posts.scss'
 
 const query = graphql`
 	query RecommendedPosts {
-		allWordpressPost(limit: 3, sort: { order: DESC, fields: date }) {
+		allWpPost(limit: 3, sort: { order: DESC, fields: date }) {
 			edges {
 				node {
 					title
-					path
+					slug
 					date
-					acf {
-						preview_image {
-							source_url
-							alt_text
+					post_preview {
+						previewImage {
+							sourceUrl
+							altText
 						}
 					}
 				}
@@ -32,7 +32,7 @@ export type Props = {}
 
 export const RecommendedPosts: React.FC<Props> = ({}) => {
 	const data = useStaticQuery<RecommendedPostsQuery>(query)
-	const { edges } = data.allWordpressPost
+	const { edges } = data.allWpPost
 
 	return (
 		<div className="recommended-posts">
@@ -45,10 +45,10 @@ export const RecommendedPosts: React.FC<Props> = ({}) => {
 						<Card
 							title={node.title ?? ''}
 							image={{
-								url: node.acf?.preview_image?.source_url ?? '',
-								alt: node.acf?.preview_image?.alt_text ?? ''
+								url: node.post_preview?.previewImage?.sourceUrl ?? '',
+								alt: node.post_preview?.previewImage?.altText ?? ''
 							}}
-							path={node.path ?? ''}
+							path={node.slug ?? ''}
 							date={parseISO(node.date) ?? new Date()}
 						/>
 					</div>
