@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react"
-import { tryParse, random } from "../../../utils/helpers"
+import { tryParse, random } from "src/utils/helpers"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
 type WpPollTag = {

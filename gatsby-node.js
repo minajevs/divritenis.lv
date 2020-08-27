@@ -11,7 +11,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allWordpressPage {
+      allWpPage {
         edges {
           node {
             id
@@ -35,7 +35,7 @@ exports.createPages = ({ actions, graphql }) => {
       // excludes drafts, future posts, etc. They will appear in development,
       // but not in a production build.
 
-      const allPages = result.data.allWordpressPage.edges
+      const allPages = result.data.allWpPage.edges
       const pages =
         process.env.NODE_ENV === 'production'
           ? getOnlyPublished(allPages)
@@ -65,7 +65,7 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
-          allWordpressPost {
+          allWpPost {
             edges {
               node {
                 id
@@ -87,7 +87,7 @@ exports.createPages = ({ actions, graphql }) => {
       const blogTemplate = path.resolve(`./src/templates/blog.tsx`)
 
       // In production builds, filter for only published posts.
-      const allPosts = result.data.allWordpressPost.edges
+      const allPosts = result.data.allWpPost.edges
       const posts =
         process.env.NODE_ENV === 'production'
           ? getOnlyPublished(allPosts)
@@ -117,7 +117,7 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
-          allWordpressCategory(filter: { count: { gt: 0 } }) {
+          allWpCategory(filter: { count: { gt: 0 } }) {
             edges {
               node {
                 id
@@ -138,7 +138,7 @@ exports.createPages = ({ actions, graphql }) => {
       const categoriesTemplate = path.resolve(`./src/templates/category.tsx`)
 
       // Create a Gatsby page for each WordPress Category
-      _.each(result.data.allWordpressCategory.edges, ({ node: cat }) => {
+      _.each(result.data.allWpCategory.edges, ({ node: cat }) => {
         createPage({
           path: `/categories/${cat.slug}/`,
           component: categoriesTemplate,
@@ -152,7 +152,7 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
-          allWordpressTag(filter: { count: { gt: 0 } }) {
+          allWpTag(filter: { count: { gt: 0 } }) {
             edges {
               node {
                 id
@@ -174,7 +174,7 @@ exports.createPages = ({ actions, graphql }) => {
       const tagsTemplate = path.resolve(`./src/templates/tag.tsx`)
 
       // Create a Gatsby page for each WordPress tag
-      _.each(result.data.allWordpressTag.edges, ({ node: tag }) => {
+      _.each(result.data.allWpTag.edges, ({ node: tag }) => {
         createPage({
           path: `/tags/${tag.slug}/`,
           component: tagsTemplate,
@@ -188,7 +188,7 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
-          allWordpressWpUsers {
+          allWpUser {
             edges {
               node {
                 id
@@ -196,7 +196,7 @@ exports.createPages = ({ actions, graphql }) => {
               }
             }
           }
-        }
+        } 
       `)
     })
     .then(result => {
@@ -207,7 +207,7 @@ exports.createPages = ({ actions, graphql }) => {
 
       const authorTemplate = path.resolve(`./src/templates/author.tsx`)
 
-      _.each(result.data.allWordpressWpUsers.edges, ({ node: author }) => {
+      _.each(result.data.allWpUser.edges, ({ node: author }) => {
         createPage({
           path: `/author/${author.slug}`,
           component: authorTemplate,
