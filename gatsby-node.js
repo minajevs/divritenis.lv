@@ -9,7 +9,6 @@ const getOnlyPublished = edges =>
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  /*
   return graphql(`
     {
       allWpPage {
@@ -197,7 +196,7 @@ exports.createPages = ({ actions, graphql }) => {
               }
             }
           }
-        }
+        } 
       `)
     })
     .then(result => {
@@ -218,7 +217,6 @@ exports.createPages = ({ actions, graphql }) => {
         })
       })
     })
-    */
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

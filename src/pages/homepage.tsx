@@ -81,6 +81,7 @@ export const pageQuery = graphql`
 						rightButtonLink
 						rightButtonText
 						text
+						backgroundImage
 					}
 				}
 				... on WpLazyblockInfocardBlock {
