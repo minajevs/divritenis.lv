@@ -23,9 +23,7 @@ const Layout: React.FC<Props> = ({ breadcrumbs, children }) => {
         <Navbar />
         <div className="section">
           <Breadcrumbs pageKeys={breadcrumbs ?? []} />
-          <div className="container">
-            {children}
-          </div>
+          <div className="container">{children}</div>
         </div>
         <Footer />
       </GoogleReCaptchaProvider>
