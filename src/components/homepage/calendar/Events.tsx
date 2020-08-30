@@ -12,7 +12,6 @@ export type Props = {
 }
 
 const Event: React.FC<{ event: CalendarEventType }> = ({ event }) => {
-  console.log()
   return (
     <>
       <div className="column is-full event">
