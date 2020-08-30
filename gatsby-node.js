@@ -43,21 +43,21 @@ exports.createPages = ({ actions, graphql }) => {
 
       // Call `createPage()` once per WordPress page
       _.each(pages, ({ node: page }) => {
-        if (page.slug == "home-page") {
+        if (page.slug == 'home-page') {
           createPage({
             path: `/`,
             component: homePageTemplate,
             context: {
-              id: page.id,
-            },
+              id: page.id
+            }
           })
         } else {
           createPage({
             path: `/${page.slug}/`,
             component: pageTemplate,
             context: {
-              id: page.id,
-            },
+              id: page.id
+            }
           })
         }
       })
@@ -99,8 +99,8 @@ exports.createPages = ({ actions, graphql }) => {
           path: `/${post.slug}/`,
           component: postTemplate,
           context: {
-            id: post.id,
-          },
+            id: post.id
+          }
         })
       })
     })
@@ -134,8 +134,8 @@ exports.createPages = ({ actions, graphql }) => {
           component: tagsTemplate,
           context: {
             name: tag.name,
-            slug: tag.slug,
-          },
+            slug: tag.slug
+          }
         })
       })
     })
@@ -149,7 +149,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value
     })
   }
 }
