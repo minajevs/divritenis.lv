@@ -29,6 +29,7 @@ $body-background-color: $white-bis;
 $button-color: #ffffff;
 $button-border-color: none;
 $button-background-color: $lra-red;
+
 $button-hover-color: $lra-gray;
 
 $box-radius: 0;
@@ -38,5 +39,7 @@ $control-radius: 0;
 $section-padding: 0 1.5em;
 $section-padding-medium: 0 1.5em;
 $section-padding-large: 0 1.5em;
+
+$navbar-breakpoint: $tablet;
 
 $gap: 64px;

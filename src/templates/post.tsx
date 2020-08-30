@@ -18,11 +18,11 @@ type TemplateProps = {
 }
 
 export const BlogPostTemplate: React.FC<TemplateProps> = ({ data }) => {
-	const { wpPost: post } = data
+	const { wpNews: post } = data
 
 	if (!post || !post.content || !post.title) return <>Error loading Post :( </>
 
-	const { title, content, date, author, categories, tags } = post
+	const { title, content, date, tags } = post
 	return (
 		<div className="container content">
 			<div className="columns">
@@ -46,7 +46,7 @@ type Props = {
 }
 
 const BlogPost: React.FC<Props> = ({ data }) => {
-	const { wpPost: post } = data
+	const { wpNews: post } = data
 
 	return (
 		<Layout
@@ -61,34 +61,15 @@ const BlogPost: React.FC<Props> = ({ data }) => {
 export default BlogPost
 
 export const pageQuery = graphql`
-	fragment PostFields on WpPost {
-		id
-		slug
-		content
-		date
-		title
-	}
 	query BlogPostByID($id: String!) {
-		wpPost(id: { eq: $id }) {
+		wpNews(id: { eq: $id }) {
 			id
 			title
 			slug
 			content
 			date
-			categories {
-				nodes {
-					name
-					slug
-				}
-			}
 			tags {
 				nodes {
-					name
-					slug
-				}
-			}
-			author {
-				node {
 					name
 					slug
 				}

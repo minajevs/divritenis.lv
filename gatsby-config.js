@@ -64,7 +64,7 @@ module.exports = {
       }
     },
     'gatsby-plugin-sharp',
-    'gatsby-plugin-typescript',
+    //'gatsby-plugin-typescript',
     'gatsby-plugin-typescript-checker',
     'gatsby-transformer-sharp',
     {
