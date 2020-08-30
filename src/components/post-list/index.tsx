@@ -6,31 +6,31 @@ import { Nullable } from 'src/utils/helperTypes'
 import PostListComponent from './PostList'
 
 type Props = {
-	posts: Nullable<PostListFieldsFragment>[]
+  posts: Nullable<PostListFieldsFragment>[]
 }
 
 const PostList: React.FC<Props> = ({ posts }) => {
-	return (
-		<div className="container">
-			<PostListComponent posts={posts} itemsPerRow={4} />
-		</div>
-	)
+  return (
+    <div className="container">
+      <PostListComponent posts={posts} itemsPerRow={4} />
+    </div>
+  )
 }
 
 export default PostList
 
 export const pageQuery = graphql`
-	fragment PostListFields on WpNews {
-		id
-		title
-		post_preview {
-			excerpt
-			previewImage {
-				sourceUrl
-				altText
-			}
-		}
-		date
-		slug
-	}
+  fragment PostListFields on WpNews {
+    id
+    title
+    post_preview {
+      excerpt
+      previewImage {
+        sourceUrl
+        altText
+      }
+    }
+    date
+    slug
+  }
 `

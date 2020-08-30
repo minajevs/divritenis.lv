@@ -94,6 +94,6 @@
   },
   "lint-staged": {
     "*.tsx": "prettier --write",
-    "*.{json,scss,md}": "prettier --write"
+    "*.{json,scss,md,js}": "prettier --write"
   }
 }

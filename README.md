@@ -10,19 +10,19 @@ Demo: https://gatsby-starter-wordpress.netlify.com/
 
     gatsby new NAME https://github.com/GatsbyCentral/gatsby-starter-wordpress
 
-* Edit `gatsby-config.js`, change `baseUrl`
+- Edit `gatsby-config.js`, change `baseUrl`
   - Make sure you have at least 1 post and 1 page on your WordPress site
   - Make sure at least 1 post has at least 1 tag
-* Ensure the permalink structure in your WordPress installation is set to `Post Name` instead of the deafult `Plain`, or else the `gatsby-source-wordpress` plugin won't be able to communicate with WordPress
-* Rejoice
+- Ensure the permalink structure in your WordPress installation is set to `Post Name` instead of the deafult `Plain`, or else the `gatsby-source-wordpress` plugin won't be able to communicate with WordPress
+- Rejoice
   - For more information on the source plugin, check out the [gatsby-source-wordpress](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress) repository page
   - File any [issues here](https://github.com/GatsbyCentral/gatsby-starter-wordpress/issues)
 
 ### Known Limitations
 
-* This is based on the [netlify starter](https://github.com/netlify-templates/gatsby-starter-netlify-cms) which uses [bulma](https://bulma.io). This adds 150KB to every built page.
-* Your WordPress site must have at least 1 post with 1 tag, or the starter will crash
-* Nested pages / categories will not render with nested pages
+- This is based on the [netlify starter](https://github.com/netlify-templates/gatsby-starter-netlify-cms) which uses [bulma](https://bulma.io). This adds 150KB to every built page.
+- Your WordPress site must have at least 1 post with 1 tag, or the starter will crash
+- Nested pages / categories will not render with nested pages
   - A WordPress page like `/about/team/` will render on Gatsby as `/team/`
   - Likewise for categories
   - Discussion here https://github.com/GatsbyCentral/gatsby-starter-wordpress/issues/24
@@ -41,5 +41,5 @@ This starter was forked from the netlify starter by the
 [GatsbyCentral](https://www.gatsbycentral.com/) crew. Additional contributions
 were gratefully received from the following folks:
 
-* https://github.com/tomByrer
-* https://github.com/dajocarter
+- https://github.com/tomByrer
+- https://github.com/dajocarter
