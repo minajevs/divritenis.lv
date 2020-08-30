@@ -38,7 +38,7 @@ export const Card: React.FC<Props> = ({
 				</div>
 			</div>
 			<div className="card-footer">
-				<a className="has-text-weight-semibold" href={path}>
+				<a className="has-text-weight-semibold" href={`/${path}`}>
 					Lasīt vairāk
 				</a>
 			</div>

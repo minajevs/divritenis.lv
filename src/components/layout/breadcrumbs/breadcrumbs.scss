@@ -1,5 +1,14 @@
+@import '../../variables';
+
 .breadcrumb {
 	margin: 0.75em 0;
+	.static-breadcrumb {
+		padding-right: 0.75em;
+		color: $lra-gray-dark;
+	}
+	.is-active span {
+		color: $lra-gray-dark;
+	}
 	li,
 	a,
 	span {

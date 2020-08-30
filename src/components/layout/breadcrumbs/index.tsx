@@ -28,7 +28,7 @@ export type PageKeys = Array<PageKey | BreadcrumbsItem>
 
 export type BreadcrumbsItem = {
 	title: string
-	path: PageKey | string
+	path: PageKey | string | null
 }
 
 type Props = {
@@ -56,13 +56,22 @@ const Breadcrumbs: React.FC<Props> = ({ pageKeys }) => {
 							key={i}
 							className={i === items.length - 1 ? 'is-active' : undefined}
 						>
-							<GatsbyLink to={item.path} key={item.path}>
+							{item.path === null ? (
 								<span
 									aria-current={i === items.length - 1 ? 'page' : undefined}
+									className="static-breadcrumb"
 								>
 									{item.title}
 								</span>
-							</GatsbyLink>
+							) : (
+								<GatsbyLink to={item.path} key={item.path}>
+									<span
+										aria-current={i === items.length - 1 ? 'page' : undefined}
+									>
+										{item.title}
+									</span>
+								</GatsbyLink>
+							)}
 						</li>
 					))}
 				</ul>

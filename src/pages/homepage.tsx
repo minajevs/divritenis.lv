@@ -32,16 +32,16 @@ const HomePage: React.FC<Props> = ({ data }) => {
 
 	return (
 		<Layout breadcrumbs={['/', '']}>
-			<div className="columns">
-				<div className="column">
+			<div className="columns is-multiline">
+				<div className="column is-full-tablet is-three-quarters-desktop">
 					<News />
 				</div>
-				<div className="column is-one-quarter">
+				<div className="column is-full-tablet is-one-quarter-desktop">
 					<div className="columns is-multiline">
-						<div className="column is-full">
+						<div className="column is-half-tablet is-full-desktop">
 							<LoadableCalendar />
 						</div>
-						<div className="column is-full">
+						<div className="column is-half-tablet is-full-desktop">
 							<Poll />
 						</div>
 					</div>

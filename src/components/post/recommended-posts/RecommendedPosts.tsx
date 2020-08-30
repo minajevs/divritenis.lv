@@ -10,7 +10,7 @@ import './recommended-posts.scss'
 
 const query = graphql`
 	query RecommendedPosts {
-		allWpPost(limit: 3, sort: { order: DESC, fields: date }) {
+		allWpNews(limit: 3, sort: { order: DESC, fields: date }) {
 			edges {
 				node {
 					title
@@ -32,7 +32,7 @@ export type Props = {}
 
 export const RecommendedPosts: React.FC<Props> = ({}) => {
 	const data = useStaticQuery<RecommendedPostsQuery>(query)
-	const { edges } = data.allWpPost
+	const { edges } = data.allWpNews
 
 	return (
 		<div className="recommended-posts">
