@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useMemo, useCallback } from 'react'
 import { isSameDay, format } from 'date-fns'
+import { Link as GatsbyLink } from 'gatsby'
 
 export type CalendarEventType = {
   title: string
   date: Date
+  link: {
+    url: string
+    newTab: boolean
+  }
 }
 
 export type Props = {
@@ -12,15 +17,25 @@ export type Props = {
 }
 
 const Event: React.FC<{ event: CalendarEventType }> = ({ event }) => {
-  return (
-    <>
-      <div className="column is-full event">
-        <p>
-          <span className="tag date">{format(event.date, 'dd/MM')}</span>
-          <strong>{event.title}</strong>
-        </p>
-      </div>
-    </>
+  const getLink = useCallback(
+    (children: React.ReactNode) =>
+      event.link.newTab ? (
+        <a href={event.link.url} target="_blank" rel="nofollow noopener">
+          {children}
+        </a>
+      ) : (
+        <GatsbyLink to={event.link.url}>{children}</GatsbyLink>
+      ),
+    [event.link]
+  )
+
+  return getLink(
+    <div className="column is-full event">
+      <p>
+        <span className="tag date">{format(event.date, 'dd/MM')}</span>
+        <strong>{event.title}</strong>
+      </p>
+    </div>
   )
 }
 

@@ -64,7 +64,10 @@ const Breadcrumbs: React.FC<Props> = ({ pageKeys }) => {
                   {item.title}
                 </span>
               ) : (
-                <GatsbyLink to={item.path} key={item.path}>
+                <GatsbyLink
+                  to={item.path !== '' ? item.path : '/'}
+                  key={item.path}
+                >
                   <span
                     aria-current={i === items.length - 1 ? 'page' : undefined}
                   >
