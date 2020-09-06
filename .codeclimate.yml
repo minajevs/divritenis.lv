@@ -1,4 +1,4 @@
-engines:
+plugins:
   eslint:
     enabled: true
   stylelint:
@@ -10,11 +10,5 @@ engines:
         typescript:
           mass_threshold: 70
 
-ratings:
-   paths:
-    - "**.ts"
-    - "**.tsx"
-    - "**.css"
-
-exclude_paths:
+exclude_patterns:
 - static/**/*

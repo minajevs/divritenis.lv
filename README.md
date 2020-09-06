@@ -1,45 +1,37 @@
 # Divritenis.lv frontend
 
-This starter is forked from the
-[gatsby-starter-netlify-cms](https://github.com/netlify-templates/gatsby-starter-netlify-cms)
-and modified to use WordPress instead of netlify-cms, using the [gatsby-source-wordpress](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress) plugin as the data connector.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6751e0e4-66d2-48cc-ad2c-bd492116b7d2/deploy-status)](https://app.netlify.com/sites/divritenis-staging/deploys)
+[![Maintainability](https://api.codeclimate.com/v1/badges/19f9741c46d441a1dacc/maintainability)](https://codeclimate.com/github/minajevs/divritenis.lv/maintainability)
 
-Demo: https://gatsby-starter-wordpress.netlify.com/
+This repository contains all the frontpage code for the _new_ [divritenis.lv](http://divritenis.lv/) website.
 
-## Use It Now
+Demo: https://divritenis-staging.netlify.app/
 
-    gatsby new NAME https://github.com/GatsbyCentral/gatsby-starter-wordpress
+## About
 
-- Edit `gatsby-config.js`, change `baseUrl`
-  - Make sure you have at least 1 post and 1 page on your WordPress site
-  - Make sure at least 1 post has at least 1 tag
-- Ensure the permalink structure in your WordPress installation is set to `Post Name` instead of the deafult `Plain`, or else the `gatsby-source-wordpress` plugin won't be able to communicate with WordPress
-- Rejoice
-  - For more information on the source plugin, check out the [gatsby-source-wordpress](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress) repository page
-  - File any [issues here](https://github.com/GatsbyCentral/gatsby-starter-wordpress/issues)
+This is a fresh redesign and complete overhaul of "Latvian Cyclists' Union" website.
 
-### Known Limitations
+Frontend is a [Jamstack](https://jamstack.org/) application, built with Gatsby, React, Bulma and other cool modern web technologies and hosted on [Netlify](https://www.netlify.com/).
 
-- This is based on the [netlify starter](https://github.com/netlify-templates/gatsby-starter-netlify-cms) which uses [bulma](https://bulma.io). This adds 150KB to every built page.
-- Your WordPress site must have at least 1 post with 1 tag, or the starter will crash
-- Nested pages / categories will not render with nested pages
-  - A WordPress page like `/about/team/` will render on Gatsby as `/team/`
-  - Likewise for categories
-  - Discussion here https://github.com/GatsbyCentral/gatsby-starter-wordpress/issues/24
+Data is sourced from WordPress backend, which is used as a headless CMS.
 
-## CSS Processing
+## Develop locally
 
-This plugin uses [gatsby-plugin-purgecss](https://www.gatsbyjs.org/packages/gatsby-plugin-purgecss/) and [bulma](https://bulma.io/). The bulma build would otherwise be ~170K which adds 170K to each of your built HTML pages. However, with purgecss this is reduced 90%.
+To run this application locally:
 
-## WordPress Setup
+1. Clone this repo
+2. Create `.env` file using contents from `.env-template`
 
-Check the [gatsby-source-wordpress](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress) plugin for more information. If you want to copy the demo content, you can grab the [WordPress XML export here](https://wpdemo.gatsbycentral.com/gatsbystarterwordpress.WordPress.2019-09-12.xml) and import it into your WordPress site as a starting point.
+- If you have Google reCAPTCHA key change `GATSBY_RECAPTCHA_SITE_KEY` value from `template` to the key, otherwise leave it as is
+- Change `GATSBY_WP_URL` value from `template` to WordPress URL of the backend. You can use staging url `https://divritenis-staging.dexie.me`
+
+3. Run `npm install`
+
+Now you can run `npm start` as usual to run Gatsby dev server. Gatsby will automatically fetch WordPress data, build GraphQL typings for TypeScript and will run type-checks as you write code.
 
 ## Contributors
 
-This starter was forked from the netlify starter by the
-[GatsbyCentral](https://www.gatsbycentral.com/) crew. Additional contributions
-were gratefully received from the following folks:
+This website is developed on a non-profit basis with a main goal of popularizing cycling in Latvia. People who contribute to this project:
 
-- https://github.com/tomByrer
-- https://github.com/dajocarter
+- https://github.com/minajevs
+- https://github.com/evazuka
