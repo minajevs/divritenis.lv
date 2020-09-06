@@ -7,7 +7,7 @@ import './breadcrumbs.scss'
 const pages = {
   '': '', // empty option needed in some cases
   '/': 'Sākumlapa',
-  page: 'Ziņas' // TODO: dedicated pages for news/blogs/posts list
+  zinas: 'Ziņas' // TODO: dedicated pages for news/blogs/posts list
 }
 
 type PageKey = keyof typeof pages

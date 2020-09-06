@@ -50,7 +50,7 @@ const BlogPost: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout
-      breadcrumbs={['page', BreadcrumbsFactory.currentPage(post?.title || '')]}
+      breadcrumbs={['zinas', BreadcrumbsFactory.currentPage(post?.title || '')]}
     >
       <Helmet title={`${post?.title} | Blog`} />
       <BlogPostTemplate data={data} />
