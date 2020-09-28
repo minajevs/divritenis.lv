@@ -84,6 +84,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
 
       const postTemplate = path.resolve(`./src/templates/post.tsx`)
+      const newsPageTemplate = path.resolve(`./src/templates/news.tsx`)
 
       // In production builds, filter for only published posts.
       const allPosts = result.data.allWpNews.edges
@@ -102,6 +103,15 @@ exports.createPages = ({ actions, graphql }) => {
             id: post.id
           }
         })
+      })
+
+      // Create a paginated post list
+      paginate({
+        createPage,
+        items: posts,
+        itemsPerPage: 10,
+        pathPrefix: `/zinas`,
+        component: newsPageTemplate
       })
     })
     .then(() => {
