@@ -14,8 +14,8 @@ export type LogoBlock = {
 }
 
 const Logo: React.FC = () => (
-  <Link to="/" className="navbar-item is-full-width">
-    <Image src={logo} alt="LRA" className="is-full-width" />
+  <Link to="/">
+    <Image src={logo} alt="LRA" />
   </Link>
 )
 

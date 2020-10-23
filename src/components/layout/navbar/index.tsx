@@ -8,21 +8,23 @@ import './navbar.scss'
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const toggleMenu = useCallback(() => setMobileMenuOpen(prev => !prev), [
-    setMobileMenuOpen
+  const toggleMenu = useCallback(() => setMobileMenuOpen((prev) => !prev), [
+    setMobileMenuOpen,
   ])
   return (
     <>
       <nav
         role="header"
         aria-label="header row"
-        className="navbar is-transparent"
+        className="navbar is-transparent is-hidden-mobile"
       >
         <div className="container">
           <div className="navbar-brand">
-            <Logo />
+            <div className="navbar-item">
+              <Logo />
+            </div>
           </div>
-          <div className="navbar-end">
+          <div className="navbar-item">
             <SocialLinks />
           </div>
         </div>
@@ -34,6 +36,9 @@ const Navbar: React.FC = () => {
       >
         <div className="container">
           <div className="navbar-brand">
+            <div className="navbar-item is-hidden-tablet">
+              <Logo />
+            </div>
             <a
               role="button"
               onClick={toggleMenu}
@@ -53,6 +58,9 @@ const Navbar: React.FC = () => {
           >
             <div className="columns is-gapless is-vcentered is-full-width has-text-centered">
               <Links linkClassName="navbar-item" />
+              <div className="navbar-item is-hidden-tablet">
+                <SocialLinks />
+              </div>
             </div>
           </div>
         </div>

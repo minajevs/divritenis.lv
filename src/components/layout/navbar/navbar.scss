@@ -1,35 +1,58 @@
+@import '../../variables';
+
 // Navbar settings
 .navbar-item img {
-	max-height: none !important;
+  max-height: none !important;
 }
 
-.navbar.row {
-	background-color: whitesmoke;
-	min-height: 0;
+.navbar-brand {
+  align-content: center;
+}
 
-	.column {
-		padding: 0.5em;
-	}
+.navbar {
+  .container {
+    justify-content: space-between;
+  }
 
-	.container {
-		min-height: 0;
-	}
+  &.row {
+    @media screen and (max-width: $tablet) {
+      background-color: white;
+      border-bottom: 1px solid $lra-gray-light;
+    }
+    @media screen and (min-width: $tablet) {
+      background-color: whitesmoke;
+    }
+
+    min-height: 0;
+
+    .navbar-brand {
+      align-items: center;
+    }
+
+    .column {
+      padding: 0.5em;
+    }
+
+    .container {
+      min-height: 0;
+    }
+  }
 }
 
 .social-links {
-	margin: auto !important;
+  margin: auto !important;
 
-	.social-icon {
-		display: flex;
-		align-items: center;
+  .social-icon {
+    display: flex;
+    align-items: center;
 
-		.icon {
-			margin: 0 auto;
-		}
-	}
+    .icon {
+      margin: 0 auto;
+    }
+  }
 }
 
 .navbar-menu {
-	background-color: unset !important;
-	box-shadow: unset !important;
+  background-color: unset !important;
+  box-shadow: unset !important;
 }
