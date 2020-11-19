@@ -9,17 +9,22 @@ import Breadcrumbs, { PageKeys } from './breadcrumbs'
 import '../all.scss'
 
 type Props = {
+  title?: string | null
   breadcrumbs?: PageKeys
 }
 
-const Layout: React.FC<Props> = ({ breadcrumbs, children }) => {
+const siteName = 'Divritenis.lv'
+
+const Layout: React.FC<Props> = ({ breadcrumbs, title, children }) => {
+  const siteTitle =
+    title === undefined || title === null ? siteName : `${siteName} | ${title}`
   return (
     <>
       <GoogleReCaptchaProvider
         reCaptchaKey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
         language="lv"
       >
-        <Helmet title="Divritenis.lv" />
+        <Helmet title={siteTitle} />
         <Navbar />
         <div className="section">
           <Breadcrumbs pageKeys={breadcrumbs ?? []} />

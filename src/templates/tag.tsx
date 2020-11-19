@@ -15,20 +15,20 @@ type Props = {
   }
 }
 
-const Tag: React.FC<Props> = props => {
+const Tag: React.FC<Props> = (props) => {
   const { data, pageContext } = props
   const { edges: posts, totalCount } = data.allWpNews
   const { name: tag } = pageContext
 
   return (
     <Layout
+      title={tag}
       breadcrumbs={[
         { title: 'Birkas', path: null },
-        { title: tag, path: `/tags/${tag}` }
+        { title: tag, path: `/tags/${tag}` },
       ]}
     >
-      <Helmet title={`${tag}`} />
-      <PostList posts={posts.map(x => x.node) ?? []} />
+      <PostList posts={posts.map((x) => x.node) ?? []} />
     </Layout>
   )
 }
