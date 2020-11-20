@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { tryParse, random } from 'src/utils/helpers'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
-import getBaseUrl from 'src/utils/getBaseUrl'
 
 type WpPollTag = {
   basetype: 'radio' | string
@@ -55,7 +54,7 @@ const setUserAnsweredPoll = (pollId: number) => {
 }
 
 const getPollAnswers = (pollId: number) =>
-  fetch(`${getBaseUrl()}/wp-json/polls/v1/poll/${pollId}`)
+  fetch(`${process.env.GATSBY_WP_URL}}/wp-json/polls/v1/poll/${pollId}`)
     .then((response) => response.json())
     .then((data: WpPollResults[]) => {
       const result: PollResults = data.reduce(
@@ -103,7 +102,7 @@ const getData = async (
   try {
     // HTTP GET WP api to get all polls
     const response = await fetch(
-      `${getBaseUrl()}/wp-json/contact-form-7/v1/contact-forms`
+      `${process.env.GATSBY_WP_URL}/wp-json/contact-form-7/v1/contact-forms`
     )
     const data: WpPoll[] = await response.json()
 
@@ -148,7 +147,7 @@ const sendVote = async (pollId: number, vote: string, captchaToken: string) => {
 
   // HTTP POST vote request
   const response = await fetch(
-    `${getBaseUrl()}/wp-json/contact-form-7/v1/contact-forms/${pollId}/feedback`,
+    `${process.env.GATSBY_WP_URL}/wp-json/contact-form-7/v1/contact-forms/${pollId}/feedback`,
     {
       method: 'POST',
       body: formData,

@@ -23,7 +23,7 @@ To run this application locally:
 2. Create `.env` file using contents from `.env-template`
 
 - If you have Google reCAPTCHA key change `GATSBY_RECAPTCHA_SITE_KEY` value from `template` to the key, otherwise leave it as is
-- Change `GATSBY_WP_URL` value from `template` to WordPress URL of the backend. You can use staging url `https://divritenis-staging.dexie.me/graphql`
+- Change `GATSBY_WP_URL` value from `template` to WordPress URL of the backend. You can use staging url `https://divritenis-staging.dexie.me`
 
 3. Run `npm install`
 

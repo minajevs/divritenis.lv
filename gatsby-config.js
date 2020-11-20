@@ -39,7 +39,7 @@ module.exports = {
       resolve: 'gatsby-source-wordpress-experimental',
       options: {
         // The base url to your WP site.
-        url: process.env.GATSBY_WP_URL,
+        url: process.env.GATSBY_WP_URL + '/graphql',
         verbose: true,
         develop: {
           hardCacheMediaFiles: true,
