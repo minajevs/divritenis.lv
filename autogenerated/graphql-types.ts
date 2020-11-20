@@ -1659,15 +1659,15 @@ export type QuerySitePageArgs = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
 };
 
 
@@ -2744,15 +2744,15 @@ export type SitePage = Node & {
   internalComponentName: Scalars['String'];
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
   context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
 };
 
 export type SitePageConnection = {
@@ -2814,6 +2814,92 @@ export type SitePageFieldsEnum =
   | 'internalComponentName'
   | 'componentChunkName'
   | 'matchPath'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
   | 'context___id'
   | 'context___pageNumber'
@@ -2926,93 +3012,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___packageJson___peerDependencies___version'
   | 'pluginCreator___packageJson___keywords'
   | 'pluginCreatorId'
-  | 'componentPath'
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type';
+  | 'componentPath';
 
 export type SitePageFilterInput = {
   path?: Maybe<StringQueryOperatorInput>;
@@ -3020,15 +3020,15 @@ export type SitePageFilterInput = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
 };
 
 export type SitePageGroupConnection = {
@@ -5925,6 +5925,7 @@ export type WpCoreButtonBlockAttributes = {
   linkTarget?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   text?: Maybe<Scalars['String']>;
   textColor?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -5943,6 +5944,7 @@ export type WpCoreButtonBlockDeprecatedV1Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   text?: Maybe<Scalars['String']>;
   textColor?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -5959,6 +5961,7 @@ export type WpCoreButtonBlockDeprecatedV2Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   text?: Maybe<Scalars['String']>;
   textColor?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -5975,6 +5978,7 @@ export type WpCoreButtonBlockDeprecatedV3Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   text?: Maybe<Scalars['String']>;
   textColor?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -5991,6 +5995,7 @@ export type WpCoreButtonBlockDeprecatedV4Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   text?: Maybe<Scalars['String']>;
   textColor?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -6007,6 +6012,7 @@ export type WpCoreButtonBlockDeprecatedV5Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   text?: Maybe<Scalars['String']>;
   textColor?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -6023,6 +6029,7 @@ export type WpCoreButtonBlockDeprecatedV6Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   text?: Maybe<Scalars['String']>;
   textColor?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -6201,6 +6208,7 @@ export type WpCoreColumnsBlockAttributes = {
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
   verticalAlignment?: Maybe<Scalars['String']>;
 };
@@ -6213,6 +6221,7 @@ export type WpCoreColumnsBlockDeprecatedV1Attributes = {
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
   verticalAlignment?: Maybe<Scalars['String']>;
 };
@@ -6223,6 +6232,7 @@ export type WpCoreColumnsBlockDeprecatedV2Attributes = {
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
   verticalAlignment?: Maybe<Scalars['String']>;
 };
@@ -6233,6 +6243,7 @@ export type WpCoreColumnsBlockDeprecatedV3Attributes = {
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
   verticalAlignment?: Maybe<Scalars['String']>;
 };
@@ -6268,12 +6279,14 @@ export type WpCoreCoverBlockAttributes = {
   customGradient?: Maybe<Scalars['String']>;
   customOverlayColor?: Maybe<Scalars['String']>;
   dimRatio: Scalars['Float'];
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   hasParallax: Scalars['Boolean'];
   id?: Maybe<Scalars['Float']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   url?: Maybe<Scalars['String']>;
 };
 
@@ -6288,12 +6301,14 @@ export type WpCoreCoverBlockDeprecatedV1Attributes = {
   customGradient?: Maybe<Scalars['String']>;
   customOverlayColor?: Maybe<Scalars['String']>;
   dimRatio: Scalars['Float'];
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   hasParallax: Scalars['Boolean'];
   id?: Maybe<Scalars['Float']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   url?: Maybe<Scalars['String']>;
 };
 
@@ -6306,12 +6321,14 @@ export type WpCoreCoverBlockDeprecatedV2Attributes = {
   customGradient?: Maybe<Scalars['String']>;
   customOverlayColor?: Maybe<Scalars['String']>;
   dimRatio: Scalars['Float'];
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   hasParallax: Scalars['Boolean'];
   id?: Maybe<Scalars['Float']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   url?: Maybe<Scalars['String']>;
 };
 
@@ -6324,12 +6341,14 @@ export type WpCoreCoverBlockDeprecatedV3Attributes = {
   customGradient?: Maybe<Scalars['String']>;
   customOverlayColor?: Maybe<Scalars['String']>;
   dimRatio: Scalars['Float'];
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   hasParallax: Scalars['Boolean'];
   id?: Maybe<Scalars['Float']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   url?: Maybe<Scalars['String']>;
 };
 
@@ -6342,12 +6361,14 @@ export type WpCoreCoverBlockDeprecatedV4Attributes = {
   customGradient?: Maybe<Scalars['String']>;
   customOverlayColor?: Maybe<Scalars['String']>;
   dimRatio: Scalars['Float'];
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   hasParallax: Scalars['Boolean'];
   id?: Maybe<Scalars['Float']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   url?: Maybe<Scalars['String']>;
 };
 
@@ -6360,12 +6381,14 @@ export type WpCoreCoverBlockDeprecatedV5Attributes = {
   customGradient?: Maybe<Scalars['String']>;
   customOverlayColor?: Maybe<Scalars['String']>;
   dimRatio: Scalars['Float'];
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   hasParallax: Scalars['Boolean'];
   id?: Maybe<Scalars['Float']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   url?: Maybe<Scalars['String']>;
 };
 
@@ -8132,6 +8155,7 @@ export type WpCoreGroupBlockAttributes = {
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   tagName: Scalars['String'];
   textColor?: Maybe<Scalars['String']>;
 };
@@ -8144,6 +8168,7 @@ export type WpCoreGroupBlockDeprecatedV1Attributes = {
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   tagName: Scalars['String'];
   textColor?: Maybe<Scalars['String']>;
 };
@@ -8154,6 +8179,7 @@ export type WpCoreGroupBlockDeprecatedV2Attributes = {
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   tagName: Scalars['String'];
   textColor?: Maybe<Scalars['String']>;
 };
@@ -8164,6 +8190,7 @@ export type WpCoreGroupBlockDeprecatedV3Attributes = {
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   tagName: Scalars['String'];
   textColor?: Maybe<Scalars['String']>;
 };
@@ -8199,6 +8226,7 @@ export type WpCoreHeadingBlockAttributes = {
   fontSize?: Maybe<Scalars['String']>;
   level: Scalars['Float'];
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
@@ -8213,6 +8241,7 @@ export type WpCoreHeadingBlockDeprecatedV1Attributes = {
   fontSize?: Maybe<Scalars['String']>;
   level: Scalars['Float'];
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
@@ -8225,6 +8254,7 @@ export type WpCoreHeadingBlockDeprecatedV2Attributes = {
   fontSize?: Maybe<Scalars['String']>;
   level: Scalars['Float'];
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
@@ -8237,6 +8267,7 @@ export type WpCoreHeadingBlockDeprecatedV3Attributes = {
   fontSize?: Maybe<Scalars['String']>;
   level: Scalars['Float'];
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
@@ -8524,6 +8555,7 @@ export type WpCoreMediaTextBlockAttributes = {
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   imageFill?: Maybe<Scalars['Boolean']>;
@@ -8539,6 +8571,7 @@ export type WpCoreMediaTextBlockAttributes = {
   mediaUrl?: Maybe<Scalars['String']>;
   mediaWidth: Scalars['Float'];
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
   verticalAlignment?: Maybe<Scalars['String']>;
 };
@@ -8550,6 +8583,7 @@ export type WpCoreMediaTextBlockDeprecatedV1Attributes = {
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   imageFill?: Maybe<Scalars['Boolean']>;
@@ -8565,6 +8599,7 @@ export type WpCoreMediaTextBlockDeprecatedV1Attributes = {
   mediaUrl?: Maybe<Scalars['String']>;
   mediaWidth: Scalars['Float'];
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
   verticalAlignment?: Maybe<Scalars['String']>;
 };
@@ -8574,6 +8609,7 @@ export type WpCoreMediaTextBlockDeprecatedV2Attributes = {
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   imageFill?: Maybe<Scalars['Boolean']>;
@@ -8589,6 +8625,7 @@ export type WpCoreMediaTextBlockDeprecatedV2Attributes = {
   mediaUrl?: Maybe<Scalars['String']>;
   mediaWidth: Scalars['Float'];
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
   verticalAlignment?: Maybe<Scalars['String']>;
 };
@@ -8598,6 +8635,7 @@ export type WpCoreMediaTextBlockDeprecatedV3Attributes = {
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
+  focalPoint?: Maybe<Scalars['JSON']>;
   gradient?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   imageFill?: Maybe<Scalars['Boolean']>;
@@ -8613,6 +8651,7 @@ export type WpCoreMediaTextBlockDeprecatedV3Attributes = {
   mediaUrl?: Maybe<Scalars['String']>;
   mediaWidth: Scalars['Float'];
   rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
   verticalAlignment?: Maybe<Scalars['String']>;
 };
@@ -8725,6 +8764,7 @@ export type WpCoreParagraphBlockAttributes = {
   dropCap: Scalars['Boolean'];
   fontSize?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
@@ -8740,6 +8780,7 @@ export type WpCoreParagraphBlockDeprecatedV1Attributes = {
   dropCap: Scalars['Boolean'];
   fontSize?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
@@ -8753,6 +8794,7 @@ export type WpCoreParagraphBlockDeprecatedV2Attributes = {
   dropCap: Scalars['Boolean'];
   fontSize?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
@@ -8766,6 +8808,7 @@ export type WpCoreParagraphBlockDeprecatedV3Attributes = {
   dropCap: Scalars['Boolean'];
   fontSize?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
@@ -8779,6 +8822,7 @@ export type WpCoreParagraphBlockDeprecatedV4Attributes = {
   dropCap: Scalars['Boolean'];
   fontSize?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
@@ -8792,6 +8836,7 @@ export type WpCoreParagraphBlockDeprecatedV5Attributes = {
   dropCap: Scalars['Boolean'];
   fontSize?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['JSON']>;
   textColor?: Maybe<Scalars['String']>;
 };
 
