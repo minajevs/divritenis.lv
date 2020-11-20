@@ -38,8 +38,10 @@ const Page: React.FC<Props> = ({ data }) => {
   const { wpPage: page } = data
 
   return (
-    <Layout breadcrumbs={[BreadcrumbsFactory.currentPage(page?.title || '')]}>
-      <Helmet title={`${page?.title}`} />
+    <Layout
+      title={page?.title}
+      breadcrumbs={[BreadcrumbsFactory.currentPage(page?.title || '')]}
+    >
       <PageTemplate title={page?.title ?? ''} content={page?.content ?? ''} />
     </Layout>
   )
