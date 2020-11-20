@@ -26,6 +26,7 @@
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-graphql-codegen": "^2.7.1",
     "gatsby-plugin-lodash": "^3.4.0",
+    "gatsby-plugin-manifest": "^2.6.1",
     "gatsby-plugin-netlify": "^2.5.0",
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-purgecss": "^5.0.0",
@@ -33,6 +34,7 @@
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sass": "^2.5.1",
     "gatsby-plugin-sharp": "^2.8.0",
+    "gatsby-plugin-ts": "^2.7.1",
     "gatsby-plugin-typescript": "^2.6.0",
     "gatsby-plugin-typescript-checker": "^1.1.1",
     "gatsby-remark-images": "^3.5.1",
@@ -64,8 +66,8 @@
   "scripts": {
     "start": "npm run develop",
     "clean": "gatsby clean",
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
-    "develop": "npm run clean && gatsby develop",
+    "build": "gatsby build --log-pages",
+    "develop": "npm run clean && gatsby develop --host localhost --port 8000",
     "serve": "gatsby serve",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"

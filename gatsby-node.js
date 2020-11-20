@@ -3,7 +3,7 @@ const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { paginate } = require('gatsby-awesome-pagination')
 
-const getOnlyPublished = edges =>
+const getOnlyPublished = (edges) =>
   _.filter(edges, ({ node }) => node.status === 'publish')
 
 exports.createPages = ({ actions, graphql }) => {
@@ -22,9 +22,9 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `)
-    .then(result => {
+    .then((result) => {
       if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
+        result.errors.forEach((e) => console.error(e.toString()))
         return Promise.reject(result.errors)
       }
 
@@ -48,16 +48,16 @@ exports.createPages = ({ actions, graphql }) => {
             path: `/`,
             component: homePageTemplate,
             context: {
-              id: page.id
-            }
+              id: page.id,
+            },
           })
         } else {
           createPage({
             path: `/${page.slug}/`,
             component: pageTemplate,
             context: {
-              id: page.id
-            }
+              id: page.id,
+            },
           })
         }
       })
@@ -77,9 +77,9 @@ exports.createPages = ({ actions, graphql }) => {
         }
       `)
     })
-    .then(result => {
+    .then((result) => {
       if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
+        result.errors.forEach((e) => console.error(e.toString()))
         return Promise.reject(result.errors)
       }
 
@@ -100,8 +100,8 @@ exports.createPages = ({ actions, graphql }) => {
           path: `/${post.slug}/`,
           component: postTemplate,
           context: {
-            id: post.id
-          }
+            id: post.id,
+          },
         })
       })
 
@@ -111,7 +111,7 @@ exports.createPages = ({ actions, graphql }) => {
         items: posts,
         itemsPerPage: 10,
         pathPrefix: `/zinas`,
-        component: newsPageTemplate
+        component: newsPageTemplate,
       })
     })
     .then(() => {
@@ -129,9 +129,9 @@ exports.createPages = ({ actions, graphql }) => {
         }
       `)
     })
-    .then(result => {
+    .then((result) => {
       if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
+        result.errors.forEach((e) => console.error(e.toString()))
         return Promise.reject(result.errors)
       }
 
@@ -144,8 +144,8 @@ exports.createPages = ({ actions, graphql }) => {
           component: tagsTemplate,
           context: {
             name: tag.name,
-            slug: tag.slug
-          }
+            slug: tag.slug,
+          },
         })
       })
     })
@@ -159,7 +159,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value
+      value,
     })
   }
 }
